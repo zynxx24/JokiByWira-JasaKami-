@@ -17,3 +17,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+run.sh
+run.bat
+setup.sh
+setup.bat
