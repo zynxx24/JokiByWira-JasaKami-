@@ -1,0 +1,19 @@
+# Dependencies
+/vendor/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Old project (migrated)
+/old_project/
+
+# Logs
+*.log

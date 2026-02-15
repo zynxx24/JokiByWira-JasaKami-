@@ -1,0 +1,96 @@
+{
+    "departments": [
+        {
+            "id": "perhotelan",
+            "name": "Perhotelan",
+            "description": "Hotel & hospitality — layanan akomodasi profesional.",
+            "image": "assets/images/hotel.jpeg",
+            "available": true,
+            "badge": "Populer",
+            "gradient": "from-emerald-500 to-teal-600",
+            "sections": [
+                {
+                    "id": "housekeeping",
+                    "name": "Housekeeping",
+                    "available": true,
+                    "subsections": [
+                        {"id": "room-attendant", "name": "Room Attendant", "description": "Kebersihan kamar", "icon": "🏠"},
+                        {"id": "public-area", "name": "Public Area", "description": "Area umum hotel", "icon": "🏢"},
+                        {"id": "laundry", "name": "Laundry", "description": "Layanan cuci & setrika", "icon": "👔"}
+                    ]
+                },
+                {
+                    "id": "front-office",
+                    "name": "Front Office",
+                    "description": "Resepsionis, concierge & guest relation.",
+                    "image": "assets/images/front-office.jpeg",
+                    "available": true
+                }
+            ]
+        },
+        {
+            "id": "kuliner",
+            "name": "Kuliner",
+            "description": "Chef, barista & F&B service berkualitas tinggi.",
+            "image": "assets/images/kuliner.jpeg",
+            "available": true,
+            "badge": "Baru",
+            "gradient": "from-orange-500 to-red-500",
+            "sections": [
+                {
+                    "id": "kitchen",
+                    "name": "Kitchen",
+                    "description": "Chef, pastry & kitchen crew.",
+                    "available": true
+                },
+                {
+                    "id": "fnb-service",
+                    "name": "F&B Service",
+                    "description": "Barista, mixologist & waiters.",
+                    "available": true
+                }
+            ]
+        },
+        {
+            "id": "pplg",
+            "name": "PPLG",
+            "description": "Developer, designer & game developer.",
+            "image": "assets/images/pplg.jpeg",
+            "available": true,
+            "badge": "Tech",
+            "gradient": "from-violet-500 to-purple-600",
+            "sections": [
+                {
+                    "id": "development",
+                    "name": "Development",
+                    "description": "Fullstack & mobile developer.",
+                    "available": true
+                },
+                {
+                    "id": "design",
+                    "name": "Design",
+                    "description": "UI/UX & graphic design.",
+                    "available": true
+                },
+                {
+                    "id": "game-dev",
+                    "name": "Game Dev",
+                    "description": "Game development & design.",
+                    "available": true
+                }
+            ]
+        }
+    ],
+    "stats": [
+        {"value": "50+", "label": "Klien Puas", "icon": "😊"},
+        {"value": "3", "label": "Bidang Layanan", "icon": "🎯"},
+        {"value": "24/7", "label": "Support", "icon": "🕐"},
+        {"value": "100%", "label": "Profesional", "icon": "⭐"}
+    ],
+    "counters": [
+        {"value": 500, "label": "Pelanggan Puas", "color": "text-brand"},
+        {"value": 1200, "label": "Proyek Selesai", "color": "text-mint-400"},
+        {"value": 50, "label": "Tenaga Ahli", "color": "text-purple-400"},
+        {"value": 4.9, "label": "Rata-rata Rating", "color": "text-yellow-400"}
+    ]
+}

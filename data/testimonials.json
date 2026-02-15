@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Sarah Wijaya",
+        "title": "Owner Villa Canggu",
+        "avatar": "👩",
+        "rating": 5,
+        "text": "Sangat puas dengan pelayanan housekeeping dari JasaKami. Raphaella bekerja sangat detail dan profesional. Villa kami jadi super bersih!"
+    },
+    {
+        "id": 2,
+        "name": "Budi Santoso",
+        "title": "Manager Resto Ubud",
+        "avatar": "👨",
+        "rating": 5,
+        "text": "Tim development JasaKami membantu kami membangun website restoran yang modern. Prosesnya cepat dan hasilnya sesuai ekspektasi."
+    },
+    {
+        "id": 3,
+        "name": "Jessica Tan",
+        "title": "HR Director",
+        "avatar": "👩",
+        "rating": 4,
+        "text": "Waiters yang disalurkan sangat terlatih dan sopan. Bahasa Inggrisnya juga bagus, sangat membantu untuk tamu asing kami."
+    }
+]

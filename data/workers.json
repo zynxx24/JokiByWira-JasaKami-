@@ -1,0 +1,397 @@
+[
+    {
+        "id": 1,
+        "name": "Ni Komang Raphaella K.",
+        "role": "Room Attendant",
+        "fee": 180000,
+        "fee_formatted": "Rp180.000",
+        "photo": "assets/images/vara.jpeg",
+        "phone": "6282147134533",
+        "phone_display": "+62 821-4713-4533",
+        "languages": [
+            {"code": "jp", "flag": "🇯🇵", "name": "Jepang"},
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"}
+        ],
+        "age": 18,
+        "experience": "Intercontinental & Glamp Nusa",
+        "rating": 4.8,
+        "gender": "female",
+        "section": "housekeeping",
+        "department": "perhotelan"
+    },
+    {
+        "id": 2,
+        "name": "Bintang Leonita",
+        "role": "Waiters",
+        "fee": 165000,
+        "fee_formatted": "Rp165.000",
+        "photo": "assets/images/bintang.jpeg",
+        "phone": "6282301279035",
+        "phone_display": "+62 823-0127-9035",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"}
+        ],
+        "age": 19,
+        "experience": "Savaya & Ulu CliffHouse",
+        "rating": 4.7,
+        "gender": "female",
+        "section": "housekeeping",
+        "department": "perhotelan"
+    },
+    {
+        "id": 3,
+        "name": "Putu Putri Cahyani",
+        "role": "Waiters",
+        "fee": 150000,
+        "fee_formatted": "Rp150.000",
+        "photo": "assets/images/cahyani.jpeg",
+        "phone": "6285604770021",
+        "phone_display": "+62 856-0477-0021",
+        "languages": [
+            {"code": "cn", "flag": "🇨🇳", "name": "Mandarin"}
+        ],
+        "age": 17,
+        "experience": "ONAYA Bali Resort & Terra Cottages",
+        "rating": 4.6,
+        "gender": "female",
+        "section": "housekeeping",
+        "department": "perhotelan"
+    },
+    {
+        "id": 4,
+        "name": "Galistan Ramdhan K.T.",
+        "role": "FNB Service",
+        "fee": 165000,
+        "fee_formatted": "Rp165.000",
+        "photo": "assets/images/galistan.jpeg",
+        "phone": "6285773860863",
+        "phone_display": "+62 857-7386-0863",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "cn", "flag": "🇨🇳", "name": "Mandarin"}
+        ],
+        "age": 19,
+        "experience": "Sofitel Bali",
+        "rating": 4.9,
+        "gender": "male",
+        "section": "housekeeping",
+        "department": "perhotelan"
+    },
+    {
+        "id": 5,
+        "name": "Kadek Yuda Prasetya",
+        "role": "FNB Service",
+        "fee": 191000,
+        "fee_formatted": "Rp191.000",
+        "photo": "assets/images/yuda.jpeg",
+        "phone": "6285792584407",
+        "phone_display": "+62 857-9258-4407",
+        "languages": [
+            {"code": "au", "flag": "🇦🇺", "name": "Australia"}
+        ],
+        "age": 17,
+        "experience": "Savaya",
+        "rating": 4.5,
+        "gender": "male",
+        "section": "housekeeping",
+        "department": "perhotelan"
+    },
+    {
+        "id": 6,
+        "name": "Made Ayu Dewi",
+        "role": "Public Area Attendant",
+        "fee": 155000,
+        "fee_formatted": "Rp155.000",
+        "photo": "assets/images/female-icon.jpeg",
+        "phone": "6281234567801",
+        "phone_display": "+62 812-3456-7801",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"}
+        ],
+        "age": 20,
+        "experience": "W Bali Seminyak",
+        "rating": 4.6,
+        "gender": "female",
+        "section": "housekeeping",
+        "department": "perhotelan"
+    },
+    {
+        "id": 7,
+        "name": "I Wayan Arka",
+        "role": "Laundry Attendant",
+        "fee": 145000,
+        "fee_formatted": "Rp145.000",
+        "photo": "assets/images/male-icon.jpeg",
+        "phone": "6281234567802",
+        "phone_display": "+62 812-3456-7802",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "jp", "flag": "🇯🇵", "name": "Jepang"}
+        ],
+        "age": 21,
+        "experience": "Alila Ubud & Mulia Resort",
+        "rating": 4.7,
+        "gender": "male",
+        "section": "housekeeping",
+        "department": "perhotelan"
+    },
+    {
+        "id": 8,
+        "name": "Ni Luh Sari Pratiwi",
+        "role": "Receptionist",
+        "fee": 200000,
+        "fee_formatted": "Rp200.000",
+        "photo": "assets/images/female-icon.jpeg",
+        "phone": "6281234567803",
+        "phone_display": "+62 812-3456-7803",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "jp", "flag": "🇯🇵", "name": "Jepang"},
+            {"code": "cn", "flag": "🇨🇳", "name": "Mandarin"}
+        ],
+        "age": 22,
+        "experience": "Four Seasons Jimbaran & Ritz Carlton",
+        "rating": 4.9,
+        "gender": "female",
+        "section": "front-office",
+        "department": "perhotelan"
+    },
+    {
+        "id": 9,
+        "name": "Kadek Arya Pratama",
+        "role": "Concierge",
+        "fee": 195000,
+        "fee_formatted": "Rp195.000",
+        "photo": "assets/images/male-icon.jpeg",
+        "phone": "6281234567804",
+        "phone_display": "+62 812-3456-7804",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "kr", "flag": "🇰🇷", "name": "Korea"}
+        ],
+        "age": 23,
+        "experience": "Conrad Bali & St. Regis",
+        "rating": 4.8,
+        "gender": "male",
+        "section": "front-office",
+        "department": "perhotelan"
+    },
+    {
+        "id": 10,
+        "name": "Putu Ratna Maharani",
+        "role": "Guest Relation Officer",
+        "fee": 210000,
+        "fee_formatted": "Rp210.000",
+        "photo": "assets/images/female-icon.jpeg",
+        "phone": "6281234567805",
+        "phone_display": "+62 812-3456-7805",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "fr", "flag": "🇫🇷", "name": "Prancis"}
+        ],
+        "age": 24,
+        "experience": "Bulgari Resort & Apurva Kempinski",
+        "rating": 4.9,
+        "gender": "female",
+        "section": "front-office",
+        "department": "perhotelan"
+    },
+    {
+        "id": 11,
+        "name": "I Made Rai Sudana",
+        "role": "Bellboy & Porter",
+        "fee": 170000,
+        "fee_formatted": "Rp170.000",
+        "photo": "assets/images/male-icon.jpeg",
+        "phone": "6281234567806",
+        "phone_display": "+62 812-3456-7806",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"}
+        ],
+        "age": 19,
+        "experience": "Hilton Bali Resort",
+        "rating": 4.5,
+        "gender": "male",
+        "section": "front-office",
+        "department": "perhotelan"
+    },
+    {
+        "id": 12,
+        "name": "Ni Kadek Wulan Sari",
+        "role": "Chef de Partie",
+        "fee": 220000,
+        "fee_formatted": "Rp220.000",
+        "photo": "assets/images/female-icon.jpeg",
+        "phone": "6281234567807",
+        "phone_display": "+62 812-3456-7807",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "jp", "flag": "🇯🇵", "name": "Jepang"}
+        ],
+        "age": 25,
+        "experience": "Mozaic Restaurant & Locavore",
+        "rating": 4.9,
+        "gender": "female",
+        "section": "kitchen",
+        "department": "kuliner"
+    },
+    {
+        "id": 13,
+        "name": "I Ketut Agus Wijaya",
+        "role": "Sous Chef",
+        "fee": 250000,
+        "fee_formatted": "Rp250.000",
+        "photo": "assets/images/male-icon.jpeg",
+        "phone": "6281234567808",
+        "phone_display": "+62 812-3456-7808",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "it", "flag": "🇮🇹", "name": "Italia"}
+        ],
+        "age": 28,
+        "experience": "Sardine Restaurant & Kayuputi St. Regis",
+        "rating": 4.8,
+        "gender": "male",
+        "section": "kitchen",
+        "department": "kuliner"
+    },
+    {
+        "id": 14,
+        "name": "Putu Ayu Laksmi",
+        "role": "Pastry Chef",
+        "fee": 200000,
+        "fee_formatted": "Rp200.000",
+        "photo": "assets/images/female-icon.jpeg",
+        "phone": "6281234567809",
+        "phone_display": "+62 812-3456-7809",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "fr", "flag": "🇫🇷", "name": "Prancis"}
+        ],
+        "age": 23,
+        "experience": "Ku De Ta & COMO Uma Canggu",
+        "rating": 4.7,
+        "gender": "female",
+        "section": "kitchen",
+        "department": "kuliner"
+    },
+    {
+        "id": 15,
+        "name": "Made Adi Wirawan",
+        "role": "Barista & Mixologist",
+        "fee": 185000,
+        "fee_formatted": "Rp185.000",
+        "photo": "assets/images/male-icon.jpeg",
+        "phone": "6281234567810",
+        "phone_display": "+62 812-3456-7810",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "au", "flag": "🇦🇺", "name": "Australia"}
+        ],
+        "age": 22,
+        "experience": "Revolver Espresso & Potato Head",
+        "rating": 4.6,
+        "gender": "male",
+        "section": "fnb-service",
+        "department": "kuliner"
+    },
+    {
+        "id": 16,
+        "name": "Ni Made Citra Dewi",
+        "role": "F&B Waitress",
+        "fee": 160000,
+        "fee_formatted": "Rp160.000",
+        "photo": "assets/images/female-icon.jpeg",
+        "phone": "6281234567811",
+        "phone_display": "+62 812-3456-7811",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "cn", "flag": "🇨🇳", "name": "Mandarin"}
+        ],
+        "age": 20,
+        "experience": "Mauri Restaurant & Sushi Tei",
+        "rating": 4.5,
+        "gender": "female",
+        "section": "fnb-service",
+        "department": "kuliner"
+    },
+    {
+        "id": 17,
+        "name": "Kadek Dimas Saputra",
+        "role": "Fullstack Developer",
+        "fee": 350000,
+        "fee_formatted": "Rp350.000",
+        "photo": "assets/images/male-icon.jpeg",
+        "phone": "6281234567812",
+        "phone_display": "+62 812-3456-7812",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "jp", "flag": "🇯🇵", "name": "Jepang"}
+        ],
+        "age": 22,
+        "experience": "Tokopedia & Freelance Projects",
+        "rating": 4.9,
+        "gender": "male",
+        "section": "development",
+        "department": "pplg"
+    },
+    {
+        "id": 18,
+        "name": "Ni Putu Rina Andini",
+        "role": "UI/UX Designer",
+        "fee": 300000,
+        "fee_formatted": "Rp300.000",
+        "photo": "assets/images/female-icon.jpeg",
+        "phone": "6281234567813",
+        "phone_display": "+62 812-3456-7813",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"}
+        ],
+        "age": 21,
+        "experience": "Gojek Design Team & Startup",
+        "rating": 4.8,
+        "gender": "female",
+        "section": "design",
+        "department": "pplg"
+    },
+    {
+        "id": 19,
+        "name": "I Wayan Dharma Kusuma",
+        "role": "Mobile Developer",
+        "fee": 320000,
+        "fee_formatted": "Rp320.000",
+        "photo": "assets/images/male-icon.jpeg",
+        "phone": "6281234567814",
+        "phone_display": "+62 812-3456-7814",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "kr", "flag": "🇰🇷", "name": "Korea"}
+        ],
+        "age": 23,
+        "experience": "Bukalapak & Indie Game Studio",
+        "rating": 4.7,
+        "gender": "male",
+        "section": "development",
+        "department": "pplg"
+    },
+    {
+        "id": 20,
+        "name": "Made Sri Rahayu",
+        "role": "Game Developer",
+        "fee": 280000,
+        "fee_formatted": "Rp280.000",
+        "photo": "assets/images/female-icon.jpeg",
+        "phone": "6281234567815",
+        "phone_display": "+62 812-3456-7815",
+        "languages": [
+            {"code": "en", "flag": "🇬🇧", "name": "Inggris"},
+            {"code": "jp", "flag": "🇯🇵", "name": "Jepang"}
+        ],
+        "age": 20,
+        "experience": "Agate Studio & Game Jam Winner",
+        "rating": 4.6,
+        "gender": "female",
+        "section": "game-dev",
+        "department": "pplg"
+    }
+]

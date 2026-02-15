@@ -1,0 +1,80 @@
+.text-gradient {
+  background: linear-gradient(135deg, #2ecc71, #4dd9a0, #22c55e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blob-shape {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.hero-pattern {
+  background-image:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(134, 239, 172, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(77, 217, 160, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(46, 204, 113, 0.15) 0%,
+      transparent 70%
+    );
+}
+
+.card-hover-glow:hover {
+  box-shadow: 0 20px 60px -12px rgba(77, 217, 160, 0.25);
+}
+
+.card-shine {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+}
+
+.section-transition {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.section-transition.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.breadcrumb-item::after {
+  content: "›";
+  margin: 0 8px;
+  color: #86efac;
+}
+
+.breadcrumb-item:last-child::after {
+  content: "";
+}
+
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+html {
+  scroll-behavior: smooth;
+}
