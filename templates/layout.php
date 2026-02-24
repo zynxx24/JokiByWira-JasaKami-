@@ -11,22 +11,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            safelist: [
+                'text-brand', 'text-brand-dark', 'text-mint-400', 'text-purple-400', 'text-yellow-400',
+                'bg-brand', 'bg-brand-dark', 'bg-mint-400', 'bg-purple-400', 'bg-yellow-400',
+                'from-brand', 'to-brand-dark', 'via-mint-400',
+                'from-emerald-500', 'to-teal-600',
+                'from-orange-500', 'to-red-500',
+                'from-violet-500', 'to-purple-600',
+                'text-pink-600', 'bg-pink-100',
+                'text-blue-600', 'bg-blue-100'
+            ],
             theme: {
                 extend: {
                     colors: {
                         mint: {
-                            50: '#f0fdf8',
-                            100: '#dcfce9',
-                            200: '#bbf7d4',
-                            300: '#86efac',
-                            400: '#4ade80',
-                            500: '#22c55e',
-                            600: '#16a34a',
+                            50: '#f0fdf9',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
                         },
                         brand: {
-                            light: '#a8f0c8',
-                            DEFAULT: '#4dd9a0',
-                            dark: '#2ecc71',
+                            light: '#6ee7b7', // Emerald 300
+                            DEFAULT: '#34d399', // Emerald 400
+                            dark: '#10b981', // Emerald 500
                         }
                     },
                     fontFamily: {
@@ -70,6 +80,7 @@
             }
         }
     </script>
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
