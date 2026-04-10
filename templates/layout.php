@@ -24,20 +24,15 @@
             theme: {
                 extend: {
                     colors: {
-                        mint: {
-                            50: '#f0fdf9',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            300: '#5eead4',
-                            400: '#2dd4bf',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                        },
-                        brand: {
-                            light: '#6ee7b7', // Emerald 300
-                            DEFAULT: '#34d399', // Emerald 400
-                            dark: '#10b981', // Emerald 500
-                        }
+                    brand: '#3b82f6',        // biru utama
+                    'brand-dark': '#1e40af', // biru gelap
+                    mint: {
+                        100: '#dbeafe',
+                        200: '#bfdbfe',
+                        300: '#93c5fd',
+                        400: '#60a5fa',
+                        500: '#3b82f6',
+                    }
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],

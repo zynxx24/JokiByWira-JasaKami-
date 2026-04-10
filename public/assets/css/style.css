@@ -1,5 +1,5 @@
 .text-gradient {
-  background: linear-gradient(135deg, #34d399, #6ee7b7, #10b981);
+  background: linear-gradient(135deg, #3b82f6, #60a5fa, #2563eb);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -19,23 +19,23 @@
   background-image:
     radial-gradient(
       circle at 20% 80%,
-      rgba(110, 231, 183, 0.3) 0%,
+      rgba(96, 165, 250, 0.3) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 20%,
-      rgba(52, 211, 153, 0.2) 0%,
+      rgba(59, 130, 246, 0.2) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 50% 50%,
-      rgba(16, 185, 129, 0.15) 0%,
+      rgba(37, 99, 235, 0.15) 0%,
       transparent 70%
     );
 }
 
 .card-hover-glow:hover {
-  box-shadow: 0 20px 60px -12px rgba(52, 211, 153, 0.25);
+  box-shadow: 0 20px 60px -12px rgba(59, 130, 246, 0.25);
 }
 
 .card-shine {
@@ -64,7 +64,7 @@
 .breadcrumb-item::after {
   content: "›";
   margin: 0 8px;
-  color: #6ee7b7;
+  color: #60a5fa;
 }
 
 .breadcrumb-item:last-child::after {
