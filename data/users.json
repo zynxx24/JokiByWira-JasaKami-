@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Administrator",
+        "email": "admin@jasakami.com",
+        "password": "admin123",
+        "role": "admin",
+        "phone": "081234567890",
+        "avatar": "👨‍💼",
+        "created_at": "2026-04-11 05:50:22"
+    },
+    {
+        "id": 2,
+        "name": "User Demo",
+        "email": "user@jasakami.com",
+        "password": "user123",
+        "role": "user",
+        "phone": "081234567891",
+        "avatar": "👤",
+        "created_at": "2026-04-11 05:50:22"
+    }
+]

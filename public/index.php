@@ -6,6 +6,11 @@ use Slim\Views\PhpRenderer;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+// Start session for auth
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // Create Container
 $container = new Container();
 
@@ -18,6 +23,9 @@ $container->set(PhpRenderer::class, function () {
 // Create App with container
 AppFactory::setContainer($container);
 $app = AppFactory::create();
+
+// Parse JSON body for POST requests
+$app->addBodyParsingMiddleware();
 
 // Add error middleware
 $app->addErrorMiddleware(true, true, true);

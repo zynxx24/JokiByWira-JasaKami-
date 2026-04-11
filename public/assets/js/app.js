@@ -210,58 +210,11 @@ function animateCounter(el) {
 }
 
 // ==========================================
-// LOGIN FORM
+// LOGIN FORM (handled inline in login.php)
 // ==========================================
 function initLoginForm() {
-    const form = document.getElementById('login-form');
-    if (!form) return;
-
-    // Toggle password visibility
-    const toggleBtn = document.getElementById('toggle-password');
-    const passwordInput = document.getElementById('password');
-    const eyeOpen = document.getElementById('eye-open');
-    const eyeClosed = document.getElementById('eye-closed');
-
-    if (toggleBtn && passwordInput) {
-        toggleBtn.addEventListener('click', () => {
-            const isPassword = passwordInput.type === 'password';
-            passwordInput.type = isPassword ? 'text' : 'password';
-            eyeOpen.classList.toggle('hidden');
-            eyeClosed.classList.toggle('hidden');
-        });
-    }
-
-    // Form submit
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = form.querySelector('#email').value;
-        const password = form.querySelector('#password').value;
-        const errorDiv = document.getElementById('error-message');
-
-        if (!email || !password) {
-            showError(errorDiv, 'Harap isi semua field!');
-            return;
-        }
-
-        // Demo credentials
-        if (email === 'admin@jasakami.com' && password === 'admin123') {
-            const btn = form.querySelector('#login-btn');
-            btn.textContent = 'Logging in...';
-            btn.disabled = true;
-            setTimeout(() => {
-                window.location.href = '/booking';
-            }, 1000);
-        } else {
-            showError(errorDiv, 'Email atau password salah. Coba: admin@jasakami.com / admin123');
-        }
-    });
-}
-
-function showError(el, msg) {
-    if (!el) return;
-    el.textContent = msg;
-    el.classList.remove('hidden');
-    setTimeout(() => el.classList.add('hidden'), 5000);
+    // Login form is now handled by inline script in login.php
+    // This function is kept as a no-op for compatibility
 }
 
 // ==========================================
