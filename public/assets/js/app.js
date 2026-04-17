@@ -324,10 +324,12 @@ function showWorkers(gender) {
         badge.textContent = gc.label;
     }
 
-    grid.innerHTML = filtered.map(w => `
+    grid.innerHTML = filtered.map(w => {
+        const photoSrc = w.photo.startsWith('http') ? w.photo : '/' + w.photo;
+        return `
         <div onclick="selectWorker(${w.id})" class="glass-card group cursor-pointer rounded-3xl overflow-hidden border border-mint-100 hover:border-brand/30 hover:shadow-2xl hover:shadow-brand/10 transition-all duration-500 hover:-translate-y-3">
             <div class="relative h-52 overflow-hidden bg-gradient-to-br from-mint-50 to-white flex items-center justify-center">
-                <img src="/${w.photo}" alt="${w.name}" class="w-36 h-36 object-cover rounded-full border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500">
+                <img src="${photoSrc}" alt="${w.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(w.name)}&size=150&background=random'" class="w-36 h-36 object-cover rounded-full border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 bg-yellow-400/90 rounded-full text-xs font-bold text-yellow-900 backdrop-blur-sm">
                     ⭐ ${w.rating}
                 </div>
@@ -357,7 +359,7 @@ function showWorkers(gender) {
                 </button>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 
     if (filtered.length === 0) {
         grid.innerHTML = `
@@ -382,12 +384,14 @@ function selectWorker(id) {
     selectedWorker = workers.find(w => w.id === id);
     if (!selectedWorker) return;
 
+    const pSrc = selectedWorker.photo.startsWith('http') ? selectedWorker.photo : '/' + selectedWorker.photo;
+
     // Fill interview panel
     const set = (sel, val) => {
         const el = document.getElementById(sel);
         if (el) {
             if (el.src !== undefined && sel.includes('img')) {
-                el.src = '/' + selectedWorker.photo;
+                el.src = pSrc;
             } else {
                 el.textContent = val;
             }
@@ -395,14 +399,14 @@ function selectWorker(id) {
     };
 
     set('selected-worker-img', '');
-    document.getElementById('selected-worker-img').src = '/' + selectedWorker.photo;
+    document.getElementById('selected-worker-img').src = pSrc;
     set('selected-worker-name', selectedWorker.name);
     set('selected-worker-role', selectedWorker.role);
     set('selected-worker-fee', selectedWorker.fee_formatted);
 
     // Fill confirm panel
     const confirmImg = document.getElementById('confirm-worker-img');
-    if (confirmImg) confirmImg.src = '/' + selectedWorker.photo;
+    if (confirmImg) confirmImg.src = pSrc;
     set('confirm-worker-name', selectedWorker.name);
     set('confirm-worker-role', selectedWorker.role);
     set('confirm-fee', selectedWorker.fee_formatted);

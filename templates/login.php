@@ -130,22 +130,6 @@ ob_start();
                 </div>
             </form>
 
-            <!-- Demo Credentials -->
-            <div class="mt-6 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 text-center">Demo Credentials</p>
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="fillDemo('admin@jasakami.com','admin123')" class="p-3 bg-white rounded-xl border border-slate-100 hover:border-brand/30 hover:shadow-md transition-all text-left group cursor-pointer">
-                        <p class="text-xs font-semibold text-purple-600 mb-0.5">👨‍💼 Admin</p>
-                        <p class="text-xs text-slate-400">admin@jasakami.com</p>
-                        <p class="text-xs text-slate-300">admin123</p>
-                    </button>
-                    <button onclick="fillDemo('user@jasakami.com','user123')" class="p-3 bg-white rounded-xl border border-slate-100 hover:border-brand/30 hover:shadow-md transition-all text-left group cursor-pointer">
-                        <p class="text-xs font-semibold text-blue-600 mb-0.5">👤 User</p>
-                        <p class="text-xs text-slate-400">user@jasakami.com</p>
-                        <p class="text-xs text-slate-300">user123</p>
-                    </button>
-                </div>
-            </div>
 
             <div class="flex items-center gap-4 my-8">
                 <div class="flex-1 h-px bg-gray-200"></div>

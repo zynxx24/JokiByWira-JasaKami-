@@ -44,11 +44,22 @@ $users = $users ?? [];
                         </td>
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand/20 to-blue-100 flex items-center justify-center text-lg shrink-0">
-                                    <?= $u['avatar'] ?? '👤' ?>
-                                </div>
+                                <?php
+                                    $gender   = $u['gender'] ?? 'male';
+                                    $ringClass = $gender === 'female' ? 'ring-pink-300' : 'ring-blue-300';
+                                    $avatarUrl = $u['avatar'] ?? 'https://randomuser.me/api/portraits/lego/1.jpg';
+                                ?>
+                                <img
+                                    src="<?= htmlspecialchars($avatarUrl) ?>"
+                                    alt="<?= htmlspecialchars($u['name']) ?>"
+                                    class="w-10 h-10 rounded-full object-cover ring-2 <?= $ringClass ?> shrink-0"
+                                    onerror="this.src='https://ui-avatars.com/api/?name=<?= urlencode($u['name']) ?>&background=random&size=40'"
+                                >
                                 <div class="min-w-0">
                                     <p class="font-semibold text-gray-700 truncate"><?= htmlspecialchars($u['name']) ?></p>
+                                    <p class="text-xs <?= $gender === 'female' ? 'text-pink-400' : 'text-blue-400' ?>">
+                                        <?= $gender === 'female' ? '♀ Perempuan' : '♂ Laki-laki' ?>
+                                    </p>
                                 </div>
                             </div>
                         </td>

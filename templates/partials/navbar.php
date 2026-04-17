@@ -6,12 +6,10 @@ $user = $user ?? null;
     class="fixed top-0 w-full z-50 transition-all duration-500 <?= $current === 'home' ? 'bg-transparent' : 'bg-gradient-to-r from-brand via-mint-400 to-brand-dark shadow-lg shadow-brand/10' ?>">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="/" class="flex items-center gap-3 group">
-            <div
-                class="w-14 h-14 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <img src="/assets/images/logo.png" alt="Logo JasaKami" class="w-14 h-14 object-contain drop-shadow-lg">
+            <div class="rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <img src="/assets/images/logo.png" alt="Logo JasaKami" class="w-16 h-16 object-contain drop-shadow-lg">
             </div>
-            <span
-                class="text-lg font-bold <?= $current === 'home' ? 'text-white' : 'text-white' ?> group-hover:text-mint-200 transition-colors hidden sm:block tracking-wide">JasaKami</span>
+            <span class="text-xl font-bold text-white group-hover:text-mint-200 transition-colors hidden sm:block tracking-wide">JasaKami</span>
         </a>
         <div class="hidden md:flex items-center gap-8">
             <?php if ($current === 'home'): ?>
@@ -32,8 +30,16 @@ $user = $user ?? null;
             <?php if ($user): ?>
                 <!-- Logged in state -->
                 <div class="flex items-center gap-3 pl-4 border-l border-white/20">
-                    <div class="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-lg">
-                        <?= $user['avatar'] ?? '👤' ?>
+                    <?php
+                        $navAvatar = $user['avatar'] ?? '';
+                        $isUrl = str_starts_with($navAvatar, 'http');
+                    ?>
+                    <div class="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center overflow-hidden">
+                        <?php if ($isUrl): ?>
+                            <img src="<?= htmlspecialchars($navAvatar) ?>" alt="<?= htmlspecialchars($user['name']) ?>" class="w-full h-full object-cover">
+                        <?php else: ?>
+                            <span class="text-lg"><?= $navAvatar ?: '👤' ?></span>
+                        <?php endif; ?>
                     </div>
                     <div class="hidden lg:block">
                         <p class="text-white text-sm font-semibold leading-tight"><?= htmlspecialchars(explode(' ', $user['name'])[0]) ?></p>
@@ -91,8 +97,13 @@ $user = $user ?? null;
 
             <?php if ($user): ?>
                 <div class="flex items-center gap-3 py-2 border-b border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center text-lg text-white">
-                        <?= $user['avatar'] ?? '👤' ?>
+                    <?php $mobAvatar = $user['avatar'] ?? ''; $mobIsUrl = str_starts_with($mobAvatar, 'http'); ?>
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center overflow-hidden text-white">
+                        <?php if ($mobIsUrl): ?>
+                            <img src="<?= htmlspecialchars($mobAvatar) ?>" alt="" class="w-full h-full object-cover">
+                        <?php else: ?>
+                            <span class="text-lg"><?= $mobAvatar ?: '👤' ?></span>
+                        <?php endif; ?>
                     </div>
                     <div>
                         <p class="font-semibold text-gray-800"><?= htmlspecialchars($user['name']) ?></p>

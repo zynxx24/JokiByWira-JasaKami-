@@ -108,12 +108,10 @@ $user = $user ?? null;
         <!-- ========== SIDEBAR ========== -->
         <aside id="admin-sidebar" class="w-72 bg-sidebar fixed inset-y-0 left-0 z-40 flex flex-col transition-transform duration-300 lg:translate-x-0 -translate-x-full">
             <!-- Logo -->
-            <div class="px-6 py-6 flex items-center gap-3 border-b border-white/5">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center shadow-lg shadow-brand/30">
-                    <img src="/assets/images/logo.png" alt="Logo" class="w-9 h-9 object-contain">
-                </div>
+            <div class="px-6 py-5 flex items-center gap-3 border-b border-white/5">
+                <img src="/assets/images/logo.png" alt="Logo" class="w-14 h-14 object-contain drop-shadow-lg">
                 <div>
-                    <h1 class="text-white font-bold text-lg tracking-wide">JasaKami</h1>
+                    <h1 class="text-white font-bold text-xl tracking-wide">JasaKami</h1>
                     <span class="text-xs text-slate-400 font-medium">Admin Panel</span>
                 </div>
             </div>
@@ -156,8 +154,13 @@ $user = $user ?? null;
             <!-- User Card -->
             <div class="px-4 py-4 border-t border-white/5">
                 <div class="flex items-center gap-3 px-3 py-3 rounded-xl bg-white/5">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center text-lg text-white shadow-md">
-                        <?= $user['avatar'] ?? '👤' ?>
+                    <?php $sideAvatar = $user['avatar'] ?? ''; $sideIsUrl = str_starts_with($sideAvatar, 'http'); ?>
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center overflow-hidden text-lg text-white shadow-md">
+                        <?php if ($sideIsUrl): ?>
+                            <img src="<?= htmlspecialchars($sideAvatar) ?>" alt="" class="w-full h-full object-cover">
+                        <?php else: ?>
+                            <span><?= $sideAvatar ?: '👤' ?></span>
+                        <?php endif; ?>
                     </div>
                     <div class="flex-1 min-w-0">
                         <p class="text-white text-sm font-semibold truncate"><?= htmlspecialchars($user['name'] ?? 'Admin') ?></p>
@@ -202,8 +205,13 @@ $user = $user ?? null;
                         </button>
                         <!-- User -->
                         <div class="flex items-center gap-3 pl-3 border-l border-slate-100">
-                            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center text-white text-sm shadow-md">
-                                <?= $user['avatar'] ?? '👤' ?>
+                            <?php $topAvatar = $user['avatar'] ?? ''; $topIsUrl = str_starts_with($topAvatar, 'http'); ?>
+                            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center text-white text-sm shadow-md overflow-hidden">
+                                <?php if ($topIsUrl): ?>
+                                    <img src="<?= htmlspecialchars($topAvatar) ?>" alt="" class="w-full h-full object-cover">
+                                <?php else: ?>
+                                    <span><?= $topAvatar ?: '👤' ?></span>
+                                <?php endif; ?>
                             </div>
                             <div class="hidden sm:block">
                                 <p class="text-sm font-semibold text-gray-700"><?= htmlspecialchars($user['name'] ?? 'Admin') ?></p>

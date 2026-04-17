@@ -44,10 +44,10 @@ $activePage = $currentPage ?? 'user-dashboard';
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside id="user-sidebar" class="w-64 bg-white border-r border-slate-100 fixed inset-y-0 left-0 z-40 flex flex-col transition-transform duration-300 lg:translate-x-0 -translate-x-full shadow-xl lg:shadow-none">
-            <div class="px-6 py-6 flex items-center gap-3 border-b border-slate-100">
-                <img src="/assets/images/logo.png" alt="Logo" class="w-10 h-10 object-contain">
+            <div class="px-6 py-5 flex items-center gap-3 border-b border-slate-100">
+                <img src="/assets/images/logo.png" alt="Logo" class="w-14 h-14 object-contain">
                 <div>
-                    <h1 class="text-brand-dark font-bold text-lg">JasaKami</h1>
+                    <h1 class="text-brand-dark font-bold text-xl">JasaKami</h1>
                     <span class="text-xs text-slate-400">My Dashboard</span>
                 </div>
             </div>
@@ -76,8 +76,13 @@ $activePage = $currentPage ?? 'user-dashboard';
             <!-- User card -->
             <div class="px-4 py-4 border-t border-slate-100">
                 <div class="flex items-center gap-3 px-3 py-3 rounded-xl bg-slate-50">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center text-lg text-white">
-                        <?= $user['avatar'] ?? '👤' ?>
+                    <?php $uAvatar = $user['avatar'] ?? ''; $uIsUrl = str_starts_with($uAvatar, 'http'); ?>
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center text-lg text-white overflow-hidden">
+                        <?php if ($uIsUrl): ?>
+                            <img src="<?= htmlspecialchars($uAvatar) ?>" alt="" class="w-full h-full object-cover">
+                        <?php else: ?>
+                            <span><?= $uAvatar ?: '👤' ?></span>
+                        <?php endif; ?>
                     </div>
                     <div class="flex-1 min-w-0">
                         <p class="text-sm font-semibold text-gray-700 truncate"><?= htmlspecialchars($user['name'] ?? 'User') ?></p>
@@ -108,8 +113,13 @@ $activePage = $currentPage ?? 'user-dashboard';
                         <h2 class="text-lg font-bold text-gray-800">Selamat datang, <?= htmlspecialchars(explode(' ', $user['name'] ?? 'User')[0]) ?>! 👋</h2>
                     </div>
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center text-white text-sm">
-                            <?= $user['avatar'] ?? '👤' ?>
+                        <?php $topAvatar = $user['avatar'] ?? ''; $topIsUrl = str_starts_with($topAvatar, 'http'); ?>
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand to-blue-600 flex items-center justify-center text-white text-sm overflow-hidden">
+                            <?php if ($topIsUrl): ?>
+                                <img src="<?= htmlspecialchars($topAvatar) ?>" alt="" class="w-full h-full object-cover">
+                            <?php else: ?>
+                                <span><?= $topAvatar ?: '👤' ?></span>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

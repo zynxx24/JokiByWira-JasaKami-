@@ -68,15 +68,19 @@ $departments = $services['departments'] ?? [];
                 'kuliner' => ['from-orange-500 to-red-500', 'orange', 'shadow-orange-200/50'],
                 'pplg' => ['from-violet-500 to-purple-600', 'violet', 'shadow-purple-200/50'],
             ];
-            $deptImages = ['perhotelan' => 'hotel.jpeg', 'kuliner' => 'kuliner.jpeg', 'pplg' => 'pplg.jpeg'];
+            $deptImages = [
+                'perhotelan' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',
+                'kuliner'    => 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
+                'pplg'       => 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80',
+            ];
             foreach ($departments as $dept):
                 $dg = $deptGradients[$dept['id']] ?? ['from-gray-500 to-gray-600', 'gray', 'shadow-gray-200/50'];
-                $deptImg = $deptImages[$dept['id']] ?? '';
+                $deptImg = $deptImages[$dept['id']] ?? 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80';
                 ?>
                 <div onclick="goStep('step-<?= $dept['id'] ?>')"
                     class="dept-card cursor-pointer group relative rounded-3xl overflow-hidden bg-white shadow-lg <?= $dg[2] ?> hover:shadow-2xl border border-gray-100 hover:border-transparent <?= $dept['available'] ? '' : 'opacity-60 pointer-events-none' ?>">
                     <div class="h-48 relative overflow-hidden">
-                        <img src="/assets/images/<?= $deptImg ?>" alt="<?= htmlspecialchars($dept['name']) ?>"
+                        <img src="<?= htmlspecialchars($deptImg) ?>" alt="<?= htmlspecialchars($dept['name']) ?>"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                         <h3 class="absolute bottom-4 left-6 text-2xl font-extrabold text-white drop-shadow-lg">
@@ -124,7 +128,7 @@ $departments = $services['departments'] ?? [];
             <div onclick="goStep('step-gender')" data-section="housekeeping"
                 class="section-card cursor-pointer bg-white rounded-3xl border-2 border-gray-100 hover:border-emerald-300 shadow-md group overflow-hidden">
                 <div class="h-36 relative overflow-hidden">
-                    <img src="/assets/images/housekeeping.jpeg" alt="Housekeeping"
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80" alt="Housekeeping"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
@@ -137,7 +141,7 @@ $departments = $services['departments'] ?? [];
             <div onclick="goStep('step-gender')" data-section="front-office"
                 class="section-card cursor-pointer bg-white rounded-3xl border-2 border-gray-100 hover:border-emerald-300 shadow-md group overflow-hidden">
                 <div class="h-36 relative overflow-hidden">
-                    <img src="/assets/images/front-office.jpeg" alt="Front Office"
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80" alt="Front Office"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
@@ -168,7 +172,7 @@ $departments = $services['departments'] ?? [];
             <div onclick="goStep('step-gender')" data-section="kitchen"
                 class="section-card cursor-pointer bg-white rounded-3xl border-2 border-gray-100 hover:border-orange-300 shadow-md group overflow-hidden">
                 <div class="h-36 relative overflow-hidden">
-                    <img src="/assets/images/kuliner.jpeg" alt="Kitchen"
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Kitchen"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
@@ -181,7 +185,7 @@ $departments = $services['departments'] ?? [];
             <div onclick="goStep('step-gender')" data-section="fnb-service"
                 class="section-card cursor-pointer bg-white rounded-3xl border-2 border-gray-100 hover:border-orange-300 shadow-md group overflow-hidden">
                 <div class="h-36 relative overflow-hidden">
-                    <img src="/assets/images/kuliner.jpeg" alt="F&B Service"
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=600&q=80" alt="F&B Service"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="object-position: center 30%;">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -213,7 +217,7 @@ $departments = $services['departments'] ?? [];
             <div onclick="goStep('step-gender')" data-section="development"
                 class="section-card cursor-pointer bg-white rounded-3xl border-2 border-gray-100 hover:border-purple-300 shadow-md group overflow-hidden">
                 <div class="h-36 relative overflow-hidden">
-                    <img src="/assets/images/pplg.jpeg" alt="Development"
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="Development"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
@@ -226,7 +230,7 @@ $departments = $services['departments'] ?? [];
             <div onclick="goStep('step-gender')" data-section="design"
                 class="section-card cursor-pointer bg-white rounded-3xl border-2 border-gray-100 hover:border-purple-300 shadow-md group overflow-hidden">
                 <div class="h-36 relative overflow-hidden">
-                    <img src="/assets/images/pplg.jpeg" alt="Design"
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="Design"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="object-position: center 70%;">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -240,7 +244,7 @@ $departments = $services['departments'] ?? [];
             <div onclick="goStep('step-gender')" data-section="game-dev"
                 class="section-card cursor-pointer bg-white rounded-3xl border-2 border-gray-100 hover:border-purple-300 shadow-md group overflow-hidden">
                 <div class="h-36 relative overflow-hidden">
-                    <img src="/assets/images/pplg.jpeg" alt="Game Dev"
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80" alt="Game Dev"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="object-position: center 40%;">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -457,7 +461,7 @@ $departments = $services['departments'] ?? [];
 
 <script>
     // Pass workers data to JS
-    window.WORKERS_DATA = <?= json_encode($workers) ?>;
+    window.WORKERS_DATA = <?= json_encode($workers, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>;
 
     // Track selected section from booking cards
     let currentSection = null;
@@ -490,22 +494,53 @@ $departments = $services['departments'] ?? [];
             badge.textContent = gc.label;
         }
 
-        grid.innerHTML = filtered.map(w => `
+        // Department color map
+        const deptColors = {
+            perhotelan: { bg: 'background:#d1fae5', text: 'color:#065f46', label: '🏨 Perhotelan' },
+            kuliner:    { bg: 'background:#ffedd5', text: 'color:#9a3412', label: '🍳 Kuliner' },
+            pplg:       { bg: 'background:#ede9fe', text: 'color:#5b21b6', label: '💻 PPLG' },
+        };
+        const genderStyle = {
+            female: { bg: 'background:#fce7f3', text: 'color:#9d174d', icon: '♀' },
+            male:   { bg: 'background:#dbeafe', text: 'color:#1e3a8a', icon: '♂' },
+        };
+
+        grid.innerHTML = filtered.map(w => {
+            const dc  = deptColors[w.department]  || { bg: 'background:#f1f5f9', text: 'color:#475569', label: w.department };
+            const gc  = genderStyle[w.gender]     || genderStyle.male;
+            const skills = (w.skills || []).slice(0, 3);
+            const photoSrc = w.photo && w.photo.startsWith('http') ? w.photo : '/' + w.photo;
+
+            return `
             <div onclick="selectWorker(${w.id})" class="glass-card group cursor-pointer rounded-3xl overflow-hidden border border-mint-100 hover:border-brand/30 hover:shadow-2xl hover:shadow-brand/10 transition-all duration-500 hover:-translate-y-3">
                 <div class="relative h-52 overflow-hidden bg-gradient-to-br from-mint-50 to-white flex items-center justify-center">
-                    <img src="/${w.photo}" alt="${w.name}" class="w-36 h-36 object-cover rounded-full border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <img src="${photoSrc}" alt="${w.name}" class="w-36 h-36 object-cover rounded-full border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500"
+                        onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(w.name)}&background=random&size=144'">
                     <div class="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 bg-yellow-400/90 rounded-full text-xs font-bold text-yellow-900 backdrop-blur-sm">
                         ⭐ ${w.rating}
                     </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-800 group-hover:text-brand-dark transition-colors mb-1">${w.name}</h3>
-                    <p class="text-sm text-brand-dark font-semibold mb-3">${w.role}</p>
-                    <div class="flex items-center gap-2 flex-wrap mb-3">
-                        ${w.languages.map(l => '<span class="text-lg" title="' + l.name + '">' + l.flag + '</span>').join('')}
-                        <span class="text-xs text-gray-400 ml-1">${w.languages.map(l => l.name).join(', ')}</span>
+                    <div class="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold backdrop-blur-sm" style="${gc.bg};${gc.text}">
+                        ${gc.icon} ${w.gender === 'female' ? 'Perempuan' : 'Laki-laki'}
                     </div>
-                    <div class="grid grid-cols-2 gap-3 text-center mb-4">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-start justify-between gap-2 mb-1">
+                        <h3 class="text-base font-bold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">${w.name}</h3>
+                        <span class="shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full" style="${dc.bg};${dc.text}">${dc.label}</span>
+                    </div>
+                    <p class="text-sm text-brand-dark font-semibold mb-3">${w.role}</p>
+
+                    <!-- Skill Tags -->
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        ${skills.map(s => `<span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">${s}</span>`).join('')}
+                        ${w.skills && w.skills.length > 3 ? `<span class="px-2 py-0.5 bg-slate-50 text-slate-400 text-xs rounded-md">+${w.skills.length - 3} lagi</span>` : ''}
+                    </div>
+
+                    <div class="flex items-center gap-2 flex-wrap mb-3">
+                        ${w.languages.map(l => '<span class="text-base" title="' + l.name + '">' + l.flag + '</span>').join('')}
+                        <span class="text-xs text-gray-400">${w.languages.map(l => l.name).join(', ')}</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-center mb-3">
                         <div class="bg-mint-50 rounded-lg py-2">
                             <div class="text-xs text-gray-400">Usia</div>
                             <div class="text-sm font-bold text-gray-800">${w.age} th</div>
@@ -515,15 +550,16 @@ $departments = $services['departments'] ?? [];
                             <div class="text-sm font-bold text-brand-dark">${w.fee_formatted}</div>
                         </div>
                     </div>
-                    <div class="text-xs text-gray-400 mb-4">
-                        <span class="font-medium text-gray-600">Pengalaman:</span> ${w.experience}
+                    <div class="text-xs text-gray-400 mb-4 truncate">
+                        <span class="font-medium text-gray-600">Exp:</span> ${w.experience}
                     </div>
                     <button class="w-full py-3 bg-gradient-to-r from-brand to-brand-dark text-white font-bold rounded-xl shadow-md shadow-brand/20 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all text-sm">
                         Pilih Pekerja
                     </button>
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
 
         if (filtered.length === 0) {
             grid.innerHTML = `

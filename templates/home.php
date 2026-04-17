@@ -140,21 +140,21 @@ $counters = $services['counters'] ?? [];
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-4 pt-8">
                         <div class="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
-                            <img src="/assets/images/hotel.jpeg" alt=""
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel"
                                 class="w-full h-48 object-cover hover:scale-110 transition-transform duration-700">
                         </div>
                         <div class="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
-                            <img src="/assets/images/kuliner.jpeg" alt=""
+                            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Kuliner"
                                 class="w-full h-56 object-cover hover:scale-110 transition-transform duration-700">
                         </div>
                     </div>
                     <div class="space-y-4">
                         <div class="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
-                            <img src="/assets/images/pplg.jpeg" alt=""
+                            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="PPLG"
                                 class="w-full h-56 object-cover hover:scale-110 transition-transform duration-700">
                         </div>
                         <div class="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
-                            <img src="/assets/images/housekeeping.jpeg" alt=""
+                            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80" alt="Housekeeping"
                                 class="w-full h-48 object-cover hover:scale-110 transition-transform duration-700">
                         </div>
                     </div>
@@ -197,7 +197,7 @@ $counters = $services['counters'] ?? [];
                 class="reveal-item group relative rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-emerald-200/30 transition-all duration-500 hover:-translate-y-1">
                 <div class="grid md:grid-cols-5">
                     <div class="md:col-span-2 relative h-64 md:h-auto overflow-hidden">
-                        <img src="/assets/images/hotel.jpeg" alt="Perhotelan"
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Perhotelan"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div
                             class="absolute inset-0 bg-gradient-to-r from-emerald-600/80 to-teal-600/60 mix-blend-multiply group-hover:opacity-70 transition-opacity">
@@ -276,7 +276,7 @@ $counters = $services['counters'] ?? [];
                         </a>
                     </div>
                     <div class="md:col-span-2 relative h-64 md:h-auto overflow-hidden order-1 md:order-2">
-                        <img src="/assets/images/kuliner.jpeg" alt="Kuliner"
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Kuliner"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div
                             class="absolute inset-0 bg-gradient-to-l from-orange-600/80 to-red-500/60 mix-blend-multiply group-hover:opacity-70 transition-opacity">
@@ -380,51 +380,49 @@ $counters = $services['counters'] ?? [];
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             <div class="reveal-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
-                <img src="/assets/images/housekeeping.jpeg" alt="Housekeeping"
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80" alt="Housekeeping"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                     <span class="text-white font-bold text-sm">Housekeeping</span>
                     <span class="text-white/70 text-xs">Perhotelan</span>
                 </div>
             </div>
             <div class="reveal-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
-                <img src="/assets/images/front-office.jpeg" alt="Front Office"
+                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80" alt="Front Office"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                     <span class="text-white font-bold text-sm">Front Office</span>
                     <span class="text-white/70 text-xs">Perhotelan</span>
                 </div>
             </div>
             <div class="reveal-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
-                <img src="/assets/images/public-area.jpeg" alt="Public Area"
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Kuliner"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                    <span class="text-white font-bold text-sm">Public Area</span>
-                    <span class="text-white/70 text-xs">Perhotelan</span>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    <span class="text-white font-bold text-sm">Kuliner</span>
+                    <span class="text-white/70 text-xs">Restoran & Cafe</span>
                 </div>
             </div>
             <div class="reveal-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
-                <img src="/assets/images/laundry.jpeg" alt="Laundry"
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="PPLG"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                    <span class="text-white font-bold text-sm">Laundry</span>
-                    <span class="text-white/70 text-xs">Perhotelan</span>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    <span class="text-white font-bold text-sm">PPLG</span>
+                    <span class="text-white/70 text-xs">Tech & Development</span>
                 </div>
             </div>
         </div>
 
         <!-- Marquee-style team badges -->
         <div class="mt-12 flex flex-wrap gap-3 justify-center reveal-item">
-            <?php foreach (array_slice($workers, 0, 8) as $w): ?>
-                <div
-                    class="flex items-center gap-3 pl-1 pr-4 py-1 bg-gray-50 rounded-full border border-gray-100 hover:border-brand/30 hover:bg-mint-50/50 transition-all">
-                    <img src="/<?= htmlspecialchars($w['photo']) ?>" alt="" class="w-8 h-8 rounded-full object-cover">
-                    <span
-                        class="text-sm font-medium text-gray-700"><?= htmlspecialchars(explode(' ', $w['name'])[0]) ?></span>
+            <?php foreach (array_slice($workers, 0, 8) as $w):
+                $photoSrc = (str_starts_with($w['photo'], 'http')) ? $w['photo'] : '/' . $w['photo'];
+            ?>
+                <div class="flex items-center gap-3 pl-1 pr-4 py-1 bg-gray-50 rounded-full border border-gray-100 hover:border-brand/30 hover:bg-mint-50/50 transition-all">
+                    <img src="<?= htmlspecialchars($photoSrc) ?>" alt=""
+                        class="w-8 h-8 rounded-full object-cover"
+                        onerror="this.src='https://ui-avatars.com/api/?name=<?= urlencode($w['name']) ?>&size=40&background=random'">
+                    <span class="text-sm font-medium text-gray-700"><?= htmlspecialchars(explode(' ', $w['name'])[0]) ?></span>
                     <span class="text-xs text-gray-400"><?= htmlspecialchars($w['role']) ?></span>
                 </div>
             <?php endforeach; ?>

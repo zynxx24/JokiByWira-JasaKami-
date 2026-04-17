@@ -248,15 +248,17 @@ $app->post('/api/register', function (Request $request, Response $response) {
         if ($u['id'] > $maxId) $maxId = $u['id'];
     }
 
-    $avatars = ['👤', '👩', '👨', '🧑', '👱', '👸', '🤴', '🧔'];
+    $avatarNum  = rand(1, 70);
+    $avatarGender = 'men'; // default
     $newUser = [
         'id' => $maxId + 1,
         'name' => $name,
         'email' => $email,
         'password' => $password,
-        'role' => 'user', // Always register as user
+        'role' => 'user',
         'phone' => $phone,
-        'avatar' => $avatars[array_rand($avatars)],
+        'gender' => 'male',
+        'avatar' => "https://randomuser.me/api/portraits/{$avatarGender}/{$avatarNum}.jpg",
         'created_at' => date('Y-m-d H:i:s'),
     ];
 

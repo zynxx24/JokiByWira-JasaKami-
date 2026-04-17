@@ -15,8 +15,17 @@ $totalSpent = array_sum(array_column($bookings, 'total'));
     <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
     <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-white/5 rounded-full blur-xl"></div>
     <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-6">
-        <div class="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-4xl shadow-lg">
-            <?= $user['avatar'] ?? '👤' ?>
+        <?php
+            $dashAvatar = $user['avatar'] ?? '';
+            $dashIsUrl  = str_starts_with($dashAvatar, 'http');
+        ?>
+        <div class="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg overflow-hidden">
+            <?php if ($dashIsUrl): ?>
+                <img src="<?= htmlspecialchars($dashAvatar) ?>" alt="<?= htmlspecialchars($user['name'] ?? '') ?>"
+                    class="w-full h-full object-cover">
+            <?php else: ?>
+                <span class="text-4xl"><?= $dashAvatar ?: '👤' ?></span>
+            <?php endif; ?>
         </div>
         <div>
             <h1 class="text-2xl font-bold"><?= htmlspecialchars($user['name'] ?? 'User') ?></h1>
