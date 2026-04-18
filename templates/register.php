@@ -1,5 +1,8 @@
 <?php
 ob_start();
+$redirectTo = $_GET['redirect'] ?? '';
+$allowedRedirects = ['/booking', '/dashboard', '/admin'];
+$safeRedirect = in_array($redirectTo, $allowedRedirects, true) ? $redirectTo : '';
 ?>
 
 <div class="flex-1 flex items-stretch pt-16 min-h-screen">
@@ -15,7 +18,7 @@ ob_start();
 
         <div class="relative z-10 text-center px-8">
             <div class="w-28 h-28 mx-auto mb-8 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-2xl">
-                <span class="text-6xl">🚀</span>
+                <svg class="w-14 h-14 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
             <h2 class="text-3xl font-bold text-white mb-3">Bergabung dengan Kami!</h2>
             <p class="text-white/80 text-sm max-w-xs mx-auto leading-relaxed">
@@ -23,15 +26,21 @@ ob_start();
             </p>
             <div class="flex justify-center gap-4 mt-8">
                 <div class="text-center">
-                    <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-2xl mb-2">🏨</div>
+                    <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-2">
+                        <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
                     <span class="text-white/70 text-xs">Perhotelan</span>
                 </div>
                 <div class="text-center">
-                    <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-2xl mb-2">🍳</div>
+                    <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-2">
+                        <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a6 6 0 0112 0H6z"/></svg>
+                    </div>
                     <span class="text-white/70 text-xs">Kuliner</span>
                 </div>
                 <div class="text-center">
-                    <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-2xl mb-2">💻</div>
+                    <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-2">
+                        <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
                     <span class="text-white/70 text-xs">PPLG</span>
                 </div>
             </div>
@@ -171,8 +180,13 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
         if (data.success) {
             successDiv.textContent = data.message + ' Mengalihkan...';
             successDiv.classList.remove('hidden');
+            const urlRedirect = new URLSearchParams(window.location.search).get('redirect');
+            const allowed = ['/booking', '/dashboard', '/admin'];
+            const finalRedirect = (urlRedirect && allowed.includes(urlRedirect))
+                ? urlRedirect
+                : (data.redirect || '/dashboard');
             setTimeout(() => {
-                window.location.href = data.redirect || '/dashboard';
+                window.location.href = finalRedirect;
             }, 1000);
         } else {
             showRegError(errorDiv, data.message);

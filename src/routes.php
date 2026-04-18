@@ -133,19 +133,27 @@ $app->get('/register', function (Request $request, Response $response) {
     ]);
 });
 
-// Booking page
+// Booking page — requires login
 $app->get('/booking', function (Request $request, Response $response) {
-    $renderer = $this->get(PhpRenderer::class);
-    $services = loadJson('services.json');
-    $workers = loadJson('workers.json');
     $user = getLoggedInUser();
 
+    // Guard: redirect to login if not authenticated
+    if (!$user) {
+        return $response
+            ->withHeader('Location', '/login?redirect=/booking')
+            ->withStatus(302);
+    }
+
+    $renderer = $this->get(PhpRenderer::class);
+    $services = loadJson('services.json');
+    $workers  = loadJson('workers.json');
+
     return $renderer->render($response, 'booking.php', [
-        'pageTitle' => 'Pesan Layanan — JasaKami',
-        'services' => $services,
-        'workers' => $workers,
+        'pageTitle'   => 'Pesan Layanan — JasaKami',
+        'services'    => $services,
+        'workers'     => $workers,
         'currentPage' => 'booking',
-        'user' => $user,
+        'user'        => $user,
     ]);
 });
 

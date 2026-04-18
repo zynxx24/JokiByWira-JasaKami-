@@ -232,6 +232,8 @@ const STEP_LABELS = {
     'step-workers': 'Pekerja',
     'step-interview': 'Interview',
     'step-confirm': 'Konfirmasi',
+    'step-payment': 'Pembayaran',
+    'step-processing': 'Memproses',
     'step-success': 'Selesai',
 };
 
@@ -266,10 +268,19 @@ function goStep(stepId) {
 
     updateBreadcrumb();
 
-    // Generate order ID on success
+    // Init payment step when entering it
+    if (stepId === 'step-payment') {
+        if (typeof window.initPaymentStep === 'function') {
+            setTimeout(window.initPaymentStep, 50);
+        }
+    }
+
+    // Generate order ID on success (fallback – payment gateway also handles this)
     if (stepId === 'step-success') {
         const oid = document.getElementById('order-id');
-        if (oid) oid.textContent = 'JK-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 999) + 1).padStart(3, '0');
+        if (oid && !oid.textContent.startsWith('JK-')) {
+            oid.textContent = 'JK-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 999) + 1).padStart(3, '0');
+        }
 
         // Set WhatsApp link
         if (selectedWorker) {
@@ -325,7 +336,7 @@ function showWorkers(gender) {
     }
 
     grid.innerHTML = filtered.map(w => {
-        const photoSrc = w.photo.startsWith('http') ? w.photo : '/' + w.photo;
+        const photoSrc = w.photo.startsWith('http') || w.photo.startsWith('/') ? w.photo : '/' + w.photo;
         return `
         <div onclick="selectWorker(${w.id})" class="glass-card group cursor-pointer rounded-3xl overflow-hidden border border-mint-100 hover:border-brand/30 hover:shadow-2xl hover:shadow-brand/10 transition-all duration-500 hover:-translate-y-3">
             <div class="relative h-52 overflow-hidden bg-gradient-to-br from-mint-50 to-white flex items-center justify-center">
@@ -384,7 +395,7 @@ function selectWorker(id) {
     selectedWorker = workers.find(w => w.id === id);
     if (!selectedWorker) return;
 
-    const pSrc = selectedWorker.photo.startsWith('http') ? selectedWorker.photo : '/' + selectedWorker.photo;
+    const pSrc = selectedWorker.photo.startsWith('http') || selectedWorker.photo.startsWith('/') ? selectedWorker.photo : '/' + selectedWorker.photo;
 
     // Fill interview panel
     const set = (sel, val) => {

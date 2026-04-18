@@ -26,7 +26,7 @@
         "role": "Waitress",
         "fee": 165000,
         "fee_formatted": "Rp165.000",
-        "photo": "https://ui-avatars.com/api/?name=Bintang+Leonita&size=150&background=random&color=fff",
+        "photo": "/assets/images/bintang.jpeg",
         "phone": "6282301279035",
         "phone_display": "+62 823-0127-9035",
         "languages": [
@@ -46,7 +46,7 @@
         "role": "Pastry Chef",
         "fee": 195000,
         "fee_formatted": "Rp195.000",
-        "photo": "https://ui-avatars.com/api/?name=Putu+Putri+Cahyani&size=150&background=random&color=fff",
+        "photo": "/assets/images/cahyani.jpeg",
         "phone": "6285604770021",
         "phone_display": "+62 856-0477-0021",
         "languages": [
@@ -66,7 +66,7 @@
         "role": "FNB Captain",
         "fee": 185000,
         "fee_formatted": "Rp185.000",
-        "photo": "https://ui-avatars.com/api/?name=Galistan+Ramdhan&size=150&background=random&color=fff",
+        "photo": "/assets/images/galistan.jpeg",
         "phone": "6285773860863",
         "phone_display": "+62 857-7386-0863",
         "languages": [
@@ -87,7 +87,7 @@
         "role": "Room Attendant",
         "fee": 160000,
         "fee_formatted": "Rp160.000",
-        "photo": "https://ui-avatars.com/api/?name=Cia+Permata+Sari&size=150&background=random&color=fff",
+        "photo": "/assets/images/Cia.jpeg",
         "phone": "6281234567816",
         "phone_display": "+62 812-3456-7816",
         "languages": [
@@ -107,7 +107,7 @@
         "role": "F&B Waitress",
         "fee": 155000,
         "fee_formatted": "Rp155.000",
-        "photo": "https://ui-avatars.com/api/?name=Hana+Kusuma&size=150&background=random&color=fff",
+        "photo": "/assets/images/Hana.jpeg",
         "phone": "6281234567817",
         "phone_display": "+62 812-3456-7817",
         "languages": [
@@ -128,7 +128,7 @@
         "role": "Laundry Attendant",
         "fee": 140000,
         "fee_formatted": "Rp140.000",
-        "photo": "https://ui-avatars.com/api/?name=Kotijah+Rahayu&size=150&background=random&color=fff",
+        "photo": "/assets/images/Kotijah.jpeg",
         "phone": "6281234567818",
         "phone_display": "+62 812-3456-7818",
         "languages": [
@@ -148,7 +148,7 @@
         "role": "Receptionist",
         "fee": 195000,
         "fee_formatted": "Rp195.000",
-        "photo": "https://ui-avatars.com/api/?name=Lala+Indah&size=150&background=random&color=fff",
+        "photo": "/assets/images/Lala.jpeg",
         "phone": "6281234567819",
         "phone_display": "+62 812-3456-7819",
         "languages": [
@@ -169,7 +169,7 @@
         "role": "Pastry Chef",
         "fee": 190000,
         "fee_formatted": "Rp190.000",
-        "photo": "https://ui-avatars.com/api/?name=Risa+Amelia&size=150&background=random&color=fff",
+        "photo": "/assets/images/Risa.jpeg",
         "phone": "6281234567820",
         "phone_display": "+62 812-3456-7820",
         "languages": [
@@ -190,7 +190,7 @@
         "role": "Barista & Mixologist",
         "fee": 175000,
         "fee_formatted": "Rp175.000",
-        "photo": "https://ui-avatars.com/api/?name=Riva+Cantika&size=150&background=random&color=fff",
+        "photo": "/assets/images/Riva.jpeg",
         "phone": "6281234567821",
         "phone_display": "+62 812-3456-7821",
         "languages": [
@@ -210,7 +210,7 @@
         "role": "Public Area Attendant",
         "fee": 148000,
         "fee_formatted": "Rp148.000",
-        "photo": "https://ui-avatars.com/api/?name=Rosa+Melati&size=150&background=random&color=fff",
+        "photo": "/assets/images/Rosa.jpeg",
         "phone": "6281234567822",
         "phone_display": "+62 812-3456-7822",
         "languages": [
@@ -230,7 +230,7 @@
         "role": "Guest Relation Officer",
         "fee": 205000,
         "fee_formatted": "Rp205.000",
-        "photo": "https://ui-avatars.com/api/?name=Sinta+Maharani&size=150&background=random&color=fff",
+        "photo": "/assets/images/Sinta.jpeg",
         "phone": "6281234567823",
         "phone_display": "+62 812-3456-7823",
         "languages": [
@@ -251,7 +251,7 @@
         "role": "UI/UX Designer",
         "fee": 290000,
         "fee_formatted": "Rp290.000",
-        "photo": "https://ui-avatars.com/api/?name=Tika+Anggraini&size=150&background=random&color=fff",
+        "photo": "/assets/images/Tika.jpeg",
         "phone": "6281234567824",
         "phone_display": "+62 812-3456-7824",
         "languages": [
@@ -272,7 +272,7 @@
         "role": "Waitress",
         "fee": 150000,
         "fee_formatted": "Rp150.000",
-        "photo": "https://ui-avatars.com/api/?name=Tukiyem+Setiawati&size=150&background=random&color=fff",
+        "photo": "/assets/images/Tukiyem.jpeg",
         "phone": "6281234567825",
         "phone_display": "+62 812-3456-7825",
         "languages": [
@@ -293,7 +293,7 @@
         "role": "Concierge",
         "fee": 185000,
         "fee_formatted": "Rp185.000",
-        "photo": "https://ui-avatars.com/api/?name=Yunita+Pramesti&size=150&background=random&color=fff",
+        "photo": "/assets/images/Yunita.jpeg",
         "phone": "6281234567826",
         "phone_display": "+62 812-3456-7826",
         "languages": [
@@ -314,7 +314,7 @@
         "role": "Front Desk Agent",
         "fee": 180000,
         "fee_formatted": "Rp180.000",
-        "photo": "https://randomuser.me/api/portraits/men/22.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Made+Surya+Pratama&size=150&background=1a6fc4&color=fff",
         "phone": "6281234567827",
         "phone_display": "+62 812-3456-7827",
         "languages": [
@@ -334,7 +334,7 @@
         "role": "Sous Chef",
         "fee": 240000,
         "fee_formatted": "Rp240.000",
-        "photo": "https://randomuser.me/api/portraits/men/23.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Wayan+Dharma+Putra&size=150&background=e07b39&color=fff",
         "phone": "6281234567828",
         "phone_display": "+62 812-3456-7828",
         "languages": [
@@ -355,7 +355,7 @@
         "role": "Laundry Supervisor",
         "fee": 160000,
         "fee_formatted": "Rp160.000",
-        "photo": "https://randomuser.me/api/portraits/men/24.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Ketut+Agung+Wiratama&size=150&background=3a7d44&color=fff",
         "phone": "6281234567829",
         "phone_display": "+62 812-3456-7829",
         "languages": [
@@ -375,7 +375,7 @@
         "role": "Barista",
         "fee": 165000,
         "fee_formatted": "Rp165.000",
-        "photo": "https://randomuser.me/api/portraits/men/25.jpg",
+        "photo": "https://ui-avatars.com/api/?name=I+Gede+Eka+Mahendra&size=150&background=6d4c41&color=fff",
         "phone": "6281234567830",
         "phone_display": "+62 812-3456-7830",
         "languages": [
@@ -396,7 +396,7 @@
         "role": "Fullstack Developer",
         "fee": 350000,
         "fee_formatted": "Rp350.000",
-        "photo": "https://randomuser.me/api/portraits/men/26.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Dewa+Bagus+Permana&size=150&background=5c35d4&color=fff",
         "phone": "6281234567831",
         "phone_display": "+62 812-3456-7831",
         "languages": [
@@ -416,7 +416,7 @@
         "role": "Mobile Developer",
         "fee": 320000,
         "fee_formatted": "Rp320.000",
-        "photo": "https://randomuser.me/api/portraits/men/27.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Putu+Arta+Nugraha&size=150&background=0277bd&color=fff",
         "phone": "6281234567832",
         "phone_display": "+62 812-3456-7832",
         "languages": [
@@ -436,7 +436,7 @@
         "role": "Game Developer",
         "fee": 310000,
         "fee_formatted": "Rp310.000",
-        "photo": "https://randomuser.me/api/portraits/men/28.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Made+Raka+Santosa&size=150&background=2e7d32&color=fff",
         "phone": "6281234567833",
         "phone_display": "+62 812-3456-7833",
         "languages": [
@@ -456,7 +456,7 @@
         "role": "Head Chef",
         "fee": 280000,
         "fee_formatted": "Rp280.000",
-        "photo": "https://randomuser.me/api/portraits/men/29.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Nyoman+Satria+Wibawa&size=150&background=b71c1c&color=fff",
         "phone": "6281234567834",
         "phone_display": "+62 812-3456-7834",
         "languages": [
@@ -477,7 +477,7 @@
         "role": "Room Boy",
         "fee": 150000,
         "fee_formatted": "Rp150.000",
-        "photo": "https://randomuser.me/api/portraits/men/30.jpg",
+        "photo": "https://ui-avatars.com/api/?name=I+Wayan+Bagas+Andika&size=150&background=37474f&color=fff",
         "phone": "6281234567835",
         "phone_display": "+62 812-3456-7835",
         "languages": [
@@ -538,7 +538,7 @@
         "role": "Bellman",
         "fee": 155000,
         "fee_formatted": "Rp155.000",
-        "photo": "https://randomuser.me/api/portraits/men/31.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Agus+Setiawan&size=150&background=4a148c&color=fff",
         "phone": "6281234567838",
         "phone_display": "+62 812-3456-7838",
         "languages": [
@@ -578,7 +578,7 @@
         "role": "Sous Chef",
         "fee": 230000,
         "fee_formatted": "Rp230.000",
-        "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+        "photo": "https://ui-avatars.com/api/?name=Made+Arya+Kusuma&size=150&background=e65100&color=fff",
         "phone": "6281234567840",
         "phone_display": "+62 812-3456-7840",
         "languages": [

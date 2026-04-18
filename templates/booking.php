@@ -39,6 +39,146 @@ $departments = $services['departments'] ?? [];
         transform: translateY(-4px);
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
     }
+
+    /* ---- Payment Gateway Styles ---- */
+    .payment-method-card {
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(.4,0,.2,1);
+        border: 2px solid #e5e7eb;
+        border-radius: 1rem;
+        background: #fff;
+    }
+    .payment-method-card:hover {
+        border-color: #4dd9a0;
+        box-shadow: 0 8px 24px rgba(77,217,160,0.15);
+        transform: translateY(-2px);
+    }
+    .payment-method-card.selected {
+        border-color: #22c55e;
+        background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        box-shadow: 0 8px 30px rgba(34,197,94,0.2);
+    }
+    .payment-method-card.selected .pm-radio {
+        background: #22c55e;
+        border-color: #22c55e;
+    }
+    .payment-method-card.selected .pm-radio::after {
+        opacity: 1;
+    }
+    .pm-radio {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid #d1d5db;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.2s;
+    }
+    .pm-radio::after {
+        content: '';
+        position: absolute;
+        inset: 3px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+
+    .bank-detail-panel {
+        display: none;
+        animation: fadeSlideIn 0.3s ease;
+    }
+    .bank-detail-panel.active {
+        display: block;
+    }
+    @keyframes fadeSlideIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .copy-btn {
+        transition: all 0.2s;
+    }
+    .copy-btn:hover {
+        background: #22c55e;
+        color: white;
+    }
+    .copy-btn.copied {
+        background: #22c55e;
+        color: white;
+    }
+
+    /* QRIS scan box */
+    .qris-frame {
+        background: linear-gradient(135deg, #1e3a5f, #0f172a);
+        border-radius: 1.5rem;
+        padding: 2px;
+    }
+    .qris-inner {
+        background: #ffffff;
+        border-radius: calc(1.5rem - 2px);
+        padding: 1.5rem;
+    }
+    .qris-corners {
+        position: relative;
+        display: inline-block;
+    }
+    .qris-corners::before,
+    .qris-corners::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        border-color: #22c55e;
+        border-style: solid;
+    }
+    .qris-corners::before {
+        top: -4px; left: -4px;
+        border-width: 3px 0 0 3px;
+        border-radius: 4px 0 0 0;
+    }
+    .qris-corners::after {
+        bottom: -4px; right: -4px;
+        border-width: 0 3px 3px 0;
+        border-radius: 0 0 4px 0;
+    }
+
+    /* Timer */
+    .payment-timer {
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: 'tnum';
+    }
+    .timer-ring {
+        transform-origin: center;
+        transform: rotate(-90deg);
+        stroke-dasharray: 113;
+        stroke-dashoffset: 0;
+        transition: stroke-dashoffset 1s linear;
+    }
+
+    /* Upload proof */
+    .upload-zone {
+        border: 2px dashed #d1d5db;
+        border-radius: 1rem;
+        transition: all 0.3s;
+    }
+    .upload-zone:hover,
+    .upload-zone.dragover {
+        border-color: #4dd9a0;
+        background: #f0fdf4;
+    }
+
+    /* Bank logo icons (SVG shapes) */
+    .bank-logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0;
+        flex-shrink: 0;
+    }
 </style>
 
 <section class="min-h-screen pt-24 pb-16 bg-gradient-to-b from-gray-50 to-white">
@@ -119,7 +259,9 @@ $departments = $services['departments'] ?? [];
         <div class="text-center mb-12">
             <div
                 class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-100 text-emerald-700 text-sm font-semibold rounded-full mb-4">
-                🏨 Perhotelan</div>
+                <!-- Hotel/Building icon -->
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                Perhotelan</div>
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Pilih <span
                     class="text-gradient">Section</span></h2>
             <p class="text-gray-500 mt-3">Pilih bidang keahlian yang Anda butuhkan.</p>
@@ -162,7 +304,9 @@ $departments = $services['departments'] ?? [];
         <div class="text-center mb-12">
             <div
                 class="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full mb-4">
-                🍳 Kuliner</div>
+                <!-- Chef hat icon -->
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a6 6 0 0112 0H6z"/></svg>
+                Kuliner</div>
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Pilih <span
                     style="background:linear-gradient(135deg,#f97316,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Section</span>
             </h2>
@@ -207,7 +351,9 @@ $departments = $services['departments'] ?? [];
         <div class="text-center mb-12">
             <div
                 class="inline-flex items-center gap-2 px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full mb-4">
-                💻 PPLG</div>
+                <!-- Code icon -->
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                PPLG</div>
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Pilih <span
                     style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Section</span>
             </h2>
@@ -223,7 +369,7 @@ $departments = $services['departments'] ?? [];
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Development</h3>
-                    <p class="text-gray-500 text-sm mb-4">Fullstack & mobile developer.</p>
+                    <p class="text-gray-500 text-sm mb-4">Fullstack &amp; mobile developer.</p>
                     <span class="text-purple-600 text-sm font-semibold">2 workers →</span>
                 </div>
             </div>
@@ -237,7 +383,7 @@ $departments = $services['departments'] ?? [];
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Design</h3>
-                    <p class="text-gray-500 text-sm mb-4">UI/UX & graphic design.</p>
+                    <p class="text-gray-500 text-sm mb-4">UI/UX &amp; graphic design.</p>
                     <span class="text-pink-600 text-sm font-semibold">1 worker →</span>
                 </div>
             </div>
@@ -251,7 +397,7 @@ $departments = $services['departments'] ?? [];
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Game Dev</h3>
-                    <p class="text-gray-500 text-sm mb-4">Game development & design.</p>
+                    <p class="text-gray-500 text-sm mb-4">Game development &amp; design.</p>
                     <span class="text-indigo-600 text-sm font-semibold">1 worker →</span>
                 </div>
             </div>
@@ -319,7 +465,9 @@ $departments = $services['departments'] ?? [];
         <div class="text-center mb-12">
             <div
                 class="inline-flex items-center gap-2 px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full mb-4">
-                📅 Opsional</div>
+                <!-- Calendar icon -->
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Opsional</div>
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Jadwalkan <span
                     style="background:linear-gradient(135deg,#a855f7,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Interview</span>
             </h2>
@@ -347,7 +495,7 @@ $departments = $services['departments'] ?? [];
             <!-- Interview form -->
             <div class="md:col-span-3 space-y-6">
                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-                    <h4 class="font-bold text-gray-800 mb-6">Pilih Tanggal & Waktu</h4>
+                    <h4 class="font-bold text-gray-800 mb-6">Pilih Tanggal &amp; Waktu</h4>
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-600 mb-2">Tanggal</label>
@@ -379,8 +527,10 @@ $departments = $services['departments'] ?? [];
                             rows="3" placeholder="Tulis catatan untuk interview..."></textarea>
                     </div>
                     <button onclick="goStep('step-confirm')"
-                        class="w-full py-4 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-purple-200 hover:shadow-xl hover:-translate-y-0.5 transition-all">
-                        📅 Jadwalkan Interview
+                        class="w-full py-4 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-purple-200 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                        <!-- Calendar check icon -->
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                        Jadwalkan Interview
                     </button>
                 </div>
                 <button onclick="goStep('step-confirm')"
@@ -396,7 +546,9 @@ $departments = $services['departments'] ?? [];
         <div class="text-center mb-12">
             <div
                 class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand/10 text-brand-dark text-sm font-semibold rounded-full mb-4">
-                🧾 Konfirmasi</div>
+                <!-- Receipt icon -->
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 12h6M9 16h4"/></svg>
+                Konfirmasi</div>
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Ringkasan <span
                     class="text-gradient">Pesanan</span></h2>
         </div>
@@ -422,9 +574,11 @@ $departments = $services['departments'] ?? [];
                     <span id="confirm-total" class="text-2xl font-extrabold text-brand-dark"></span>
                 </div>
             </div>
-            <button onclick="goStep('step-success')"
-                class="w-full py-4 bg-gradient-to-r from-brand to-brand-dark text-white font-bold rounded-xl shadow-lg shadow-brand/30 hover:shadow-xl hover:-translate-y-0.5 transition-all text-sm uppercase tracking-wider">
-                💳 Bayar Sekarang
+            <button onclick="goStep('step-payment')"
+                class="w-full py-4 bg-gradient-to-r from-brand to-brand-dark text-white font-bold rounded-xl shadow-lg shadow-brand/30 hover:shadow-xl hover:-translate-y-0.5 transition-all text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                <!-- Credit card icon -->
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                Bayar Sekarang
             </button>
             <button onclick="goStep('step-interview')"
                 class="w-full mt-3 py-3 text-gray-400 hover:text-gray-600 text-sm font-medium transition-colors">←
@@ -432,23 +586,451 @@ $departments = $services['departments'] ?? [];
         </div>
     </div>
 
+    <!-- ===== STEP: Payment Gateway ===== -->
+    <div id="step-payment" class="booking-step hidden max-w-3xl mx-auto px-6">
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full mb-4">
+                <!-- Shield check icon -->
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                Pembayaran Aman
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Pilih Metode <span class="text-gradient">Pembayaran</span></h2>
+            <p class="text-gray-500 mt-3">Transaksi dilindungi enkripsi SSL 256-bit</p>
+        </div>
+
+        <!-- Order Summary Strip -->
+        <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-2xl px-6 py-4 mb-8 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                </div>
+                <div>
+                    <p class="text-xs text-white/50">Pembayaran untuk</p>
+                    <p id="pay-worker-name" class="font-semibold text-sm"></p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-xs text-white/50">Total tagihan</p>
+                <p id="pay-total-amount" class="text-xl font-extrabold text-emerald-400"></p>
+            </div>
+        </div>
+
+        <!-- Payment Timer -->
+        <div class="flex items-center justify-center gap-3 mb-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl">
+            <svg class="w-12 h-12 -rotate-90" viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="18" fill="none" stroke="#fde68a" stroke-width="3"/>
+                <circle id="timer-ring" cx="20" cy="20" r="18" fill="none" stroke="#f59e0b" stroke-width="3"
+                    stroke-dasharray="113" stroke-dashoffset="0" stroke-linecap="round"
+                    style="transform-origin:center;transform:rotate(-90deg);transition:stroke-dashoffset 1s linear;"/>
+            </svg>
+            <div>
+                <p class="text-xs text-amber-600 font-medium">Selesaikan pembayaran dalam</p>
+                <p id="payment-timer" class="text-2xl font-extrabold text-amber-700 payment-timer">14:59</p>
+            </div>
+        </div>
+
+        <!-- Tab: Bank / QRIS -->
+        <div class="flex gap-2 mb-6 p-1.5 bg-gray-100 rounded-2xl">
+            <button id="tab-bank" onclick="switchPayTab('bank')"
+                class="pay-tab flex-1 py-3 rounded-xl text-sm font-bold transition-all bg-white shadow text-gray-800 flex items-center justify-center gap-2">
+                <!-- Bank/building icon -->
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 10v11M12 10v11M16 10v11"/></svg>
+                Transfer Bank
+            </button>
+            <button id="tab-qris" onclick="switchPayTab('qris')"
+                class="pay-tab flex-1 py-3 rounded-xl text-sm font-bold transition-all text-gray-500 flex items-center justify-center gap-2">
+                <!-- QR code icon -->
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path stroke-linecap="round" d="M14 14h2v2h-2zM18 14h3M14 18h2M18 18h3M14 21v-3M21 21v-3M18 17v1"/></svg>
+                QRIS
+            </button>
+        </div>
+
+        <!-- ===== BANK TRANSFER PANEL ===== -->
+        <div id="panel-bank" class="pay-panel">
+            <p class="text-sm text-gray-500 mb-4 font-medium">Pilih bank tujuan transfer:</p>
+            <div class="space-y-3">
+
+                <!-- BCA -->
+                <div class="payment-method-card p-4 flex items-center gap-4" onclick="selectBank('bca')">
+                    <div class="pm-radio"></div>
+                    <div class="bank-logo" style="background:linear-gradient(135deg,#006cb7,#004e8a);">
+                        <svg width="28" height="18" viewBox="0 0 56 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <text x="0" y="18" font-family="Arial" font-weight="900" font-size="18" fill="white">BCA</text>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold text-gray-800 text-sm">Bank Central Asia</p>
+                        <p class="text-xs text-gray-400">Transfer online / ATM / m-BCA</p>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-300 chevron-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </div>
+
+                <!-- BRI -->
+                <div class="payment-method-card p-4 flex items-center gap-4" onclick="selectBank('bri')">
+                    <div class="pm-radio"></div>
+                    <div class="bank-logo" style="background:linear-gradient(135deg,#003087,#0044cc);">
+                        <svg width="28" height="18" viewBox="0 0 56 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <text x="0" y="18" font-family="Arial" font-weight="900" font-size="18" fill="white">BRI</text>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold text-gray-800 text-sm">Bank Rakyat Indonesia</p>
+                        <p class="text-xs text-gray-400">Transfer online / ATM / BRImo</p>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-300 chevron-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </div>
+
+                <!-- Mandiri -->
+                <div class="payment-method-card p-4 flex items-center gap-4" onclick="selectBank('mandiri')">
+                    <div class="pm-radio"></div>
+                    <div class="bank-logo" style="background:linear-gradient(135deg,#003087,#f2a900);">
+                        <svg width="28" height="18" viewBox="0 0 72 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <text x="0" y="18" font-family="Arial" font-weight="900" font-size="13" fill="white">MDR</text>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold text-gray-800 text-sm">Bank Mandiri</p>
+                        <p class="text-xs text-gray-400">Transfer online / ATM / Livin'</p>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-300 chevron-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </div>
+
+                <!-- BNI -->
+                <div class="payment-method-card p-4 flex items-center gap-4" onclick="selectBank('bni')">
+                    <div class="pm-radio"></div>
+                    <div class="bank-logo" style="background:linear-gradient(135deg,#f7941d,#e67e00);">
+                        <svg width="28" height="18" viewBox="0 0 56 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <text x="0" y="18" font-family="Arial" font-weight="900" font-size="18" fill="white">BNI</text>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold text-gray-800 text-sm">Bank Negara Indonesia</p>
+                        <p class="text-xs text-gray-400">Transfer online / ATM / mobile</p>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-300 chevron-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+
+            <!-- Bank Detail Panel -->
+            <div id="bank-detail" class="bank-detail-panel mt-6">
+                <div class="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="flex items-center gap-3">
+                            <div id="detail-bank-logo" class="bank-logo w-10 h-10" style="background:linear-gradient(135deg,#006cb7,#004e8a);">
+                                <svg width="24" height="14" viewBox="0 0 56 24" fill="white"><text x="0" y="18" font-family="Arial" font-weight="900" font-size="18" fill="white">BCA</text></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Transfer ke</p>
+                                <p id="detail-bank-name" class="font-bold text-gray-800 text-sm">Bank Central Asia</p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full">Virtual Account</span>
+                    </div>
+
+                    <!-- Account Number -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 mb-4">
+                        <p class="text-xs text-gray-400 mb-1">Nomor Virtual Account</p>
+                        <div class="flex items-center justify-between gap-3">
+                            <p id="detail-va-number" class="text-2xl font-extrabold text-gray-900 tracking-widest">1234 5678 9012</p>
+                            <button class="copy-btn flex items-center gap-1.5 px-3 py-2 border border-slate-200 rounded-lg text-xs font-semibold text-gray-600 transition-all"
+                                onclick="copyVA()">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                Salin
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Amount -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 mb-5">
+                        <p class="text-xs text-gray-400 mb-1">Jumlah Transfer (tepat)</p>
+                        <div class="flex items-center justify-between gap-3">
+                            <p id="detail-amount" class="text-xl font-extrabold text-brand-dark"></p>
+                            <button class="copy-btn flex items-center gap-1.5 px-3 py-2 border border-slate-200 rounded-lg text-xs font-semibold text-gray-600 transition-all"
+                                onclick="copyAmount()">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                Salin
+                            </button>
+                        </div>
+                        <p class="text-xs text-amber-600 mt-2 flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            Transfer tepat sesuai nominal, kode unik untuk verifikasi
+                        </p>
+                    </div>
+
+                    <!-- Steps -->
+                    <div class="space-y-2.5 mb-5">
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Cara Transfer</p>
+                        <div class="flex items-start gap-3">
+                            <span class="w-5 h-5 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                            <p class="text-sm text-gray-600">Login ke mobile banking / internet banking / ATM Anda</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-5 h-5 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                            <p class="text-sm text-gray-600">Pilih menu <span id="detail-menu-name" class="font-semibold">Transfer / Virtual Account</span></p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-5 h-5 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                            <p class="text-sm text-gray-600">Masukkan nomor Virtual Account dan nominal transfer</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-5 h-5 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                            <p class="text-sm text-gray-600">Konfirmasi dan simpan bukti transfer</p>
+                        </div>
+                    </div>
+
+                    <!-- Upload Proof -->
+                    <div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Upload Bukti Transfer</p>
+                        <div class="upload-zone p-6 text-center cursor-pointer" id="upload-zone" onclick="document.getElementById('proof-file').click()">
+                            <input type="file" id="proof-file" class="hidden" accept="image/*" onchange="handleFileUpload(this)">
+                            <div id="upload-placeholder">
+                                <svg class="w-10 h-10 mx-auto text-gray-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <p class="text-sm text-gray-500 font-medium">Klik untuk upload foto bukti transfer</p>
+                                <p class="text-xs text-gray-400 mt-1">JPG, PNG, maks. 5MB</p>
+                            </div>
+                            <div id="upload-preview" class="hidden">
+                                <svg class="w-8 h-8 mx-auto text-emerald-500 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <p id="upload-filename" class="text-sm text-emerald-700 font-semibold"></p>
+                                <p class="text-xs text-gray-400">Klik untuk ganti file</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-confirm-bank" onclick="confirmPayment()"
+                class="w-full mt-6 py-4 bg-gradient-to-r from-brand to-brand-dark text-white font-bold rounded-xl shadow-lg shadow-brand/30 hover:shadow-xl hover:-translate-y-0.5 transition-all text-sm uppercase tracking-wider flex items-center justify-center gap-2 opacity-50 cursor-not-allowed"
+                disabled>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Konfirmasi Pembayaran
+            </button>
+        </div>
+
+        <!-- ===== QRIS PANEL ===== -->
+        <div id="panel-qris" class="pay-panel hidden">
+            <div class="flex flex-col items-center">
+                <p class="text-sm text-gray-500 mb-6 text-center">Scan kode QR dengan aplikasi apapun yang mendukung QRIS</p>
+
+                <!-- QRIS QR Code (generated SVG placeholder) -->
+                <div class="qris-frame mb-6" style="display:inline-block;">
+                    <div class="qris-inner">
+                        <div class="flex items-center justify-center mb-3">
+                            <!-- QRIS logo text badge -->
+                            <div class="flex items-center gap-2 px-4 py-1.5 bg-red-600 rounded-lg">
+                                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h2v2h-2zM18 14h3M14 18h2M18 18h3M14 21v-3M21 21v-3M18 17v1"/></svg>
+                                <span class="text-white font-extrabold text-xs tracking-widest">QRIS</span>
+                            </div>
+                        </div>
+
+                        <!-- QR Code SVG (visual placeholder grid) -->
+                        <div class="qris-corners" style="display:inline-block;">
+                            <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                                <!-- Finder patterns -->
+                                <rect x="10" y="10" width="56" height="56" rx="4" fill="#111"/>
+                                <rect x="17" y="17" width="42" height="42" rx="2" fill="white"/>
+                                <rect x="24" y="24" width="28" height="28" rx="2" fill="#111"/>
+
+                                <rect x="134" y="10" width="56" height="56" rx="4" fill="#111"/>
+                                <rect x="141" y="17" width="42" height="42" rx="2" fill="white"/>
+                                <rect x="148" y="24" width="28" height="28" rx="2" fill="#111"/>
+
+                                <rect x="10" y="134" width="56" height="56" rx="4" fill="#111"/>
+                                <rect x="17" y="141" width="42" height="42" rx="2" fill="white"/>
+                                <rect x="24" y="148" width="28" height="28" rx="2" fill="#111"/>
+
+                                <!-- Data modules pattern (decorative) -->
+                                <g fill="#111">
+                                    <rect x="78" y="10" width="8" height="8"/>
+                                    <rect x="94" y="10" width="8" height="8"/>
+                                    <rect x="78" y="26" width="8" height="8"/>
+                                    <rect x="110" y="18" width="8" height="8"/>
+                                    <rect x="78" y="42" width="8" height="8"/>
+                                    <rect x="94" y="50" width="8" height="8"/>
+                                    <rect x="110" y="34" width="8" height="8"/>
+
+                                    <rect x="10" y="78" width="8" height="8"/>
+                                    <rect x="26" y="78" width="8" height="8"/>
+                                    <rect x="42" y="94" width="8" height="8"/>
+                                    <rect x="10" y="110" width="8" height="8"/>
+                                    <rect x="58" y="78" width="8" height="8"/>
+                                    <rect x="58" y="94" width="8" height="8"/>
+                                    <rect x="26" y="110" width="8" height="8"/>
+
+                                    <rect x="78" y="78" width="8" height="8"/>
+                                    <rect x="94" y="78" width="8" height="8"/>
+                                    <rect x="110" y="78" width="8" height="8"/>
+                                    <rect x="78" y="94" width="8" height="8"/>
+                                    <rect x="110" y="94" width="8" height="8"/>
+                                    <rect x="78" y="110" width="8" height="8"/>
+                                    <rect x="94" y="110" width="8" height="8"/>
+                                    <rect x="110" y="110" width="8" height="8"/>
+
+                                    <rect x="126" y="78" width="8" height="8"/>
+                                    <rect x="142" y="86" width="8" height="8"/>
+                                    <rect x="158" y="78" width="8" height="8"/>
+                                    <rect x="174" y="94" width="8" height="8"/>
+                                    <rect x="126" y="102" width="8" height="8"/>
+                                    <rect x="158" y="110" width="8" height="8"/>
+                                    <rect x="142" y="110" width="8" height="8"/>
+
+                                    <rect x="78" y="126" width="8" height="8"/>
+                                    <rect x="94" y="142" width="8" height="8"/>
+                                    <rect x="110" y="126" width="8" height="8"/>
+                                    <rect x="78" y="158" width="8" height="8"/>
+                                    <rect x="110" y="158" width="8" height="8"/>
+                                    <rect x="78" y="174" width="8" height="8"/>
+                                    <rect x="94" y="174" width="8" height="8"/>
+
+                                    <rect x="126" y="134" width="8" height="8"/>
+                                    <rect x="142" y="126" width="8" height="8"/>
+                                    <rect x="158" y="134" width="8" height="8"/>
+                                    <rect x="174" y="126" width="8" height="8"/>
+                                    <rect x="126" y="150" width="8" height="8"/>
+                                    <rect x="174" y="150" width="8" height="8"/>
+                                    <rect x="142" y="158" width="8" height="8"/>
+                                    <rect x="158" y="174" width="8" height="8"/>
+                                    <rect x="174" y="174" width="8" height="8"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <p class="text-xs text-gray-400">Berlaku untuk semua dompet digital</p>
+                            <!-- App icons as colored dots -->
+                            <div class="flex items-center justify-center gap-2 mt-2">
+                                <span class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#00aef0;">G</span>
+                                <span class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#5433ff;">D</span>
+                                <span class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#e45c2b;">S</span>
+                                <span class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#1db954;">L</span>
+                                <span class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#f7931e;">O</span>
+                                <span class="text-xs text-gray-400">+50 lainnya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amount for QRIS -->
+                <div class="w-full bg-white border border-gray-200 rounded-2xl p-5 mb-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-400">Nominal pembayaran</p>
+                            <p id="qris-amount" class="text-2xl font-extrabold text-gray-900 mt-1"></p>
+                        </div>
+                        <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h2v2h-2zM18 14h3M14 18h2"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QRIS Steps -->
+                <div class="w-full space-y-3 mb-6">
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Cara Bayar via QRIS</p>
+                    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        </div>
+                        <p class="text-sm text-gray-600">Buka aplikasi dompet digital atau m-banking Anda</p>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <p class="text-sm text-gray-600">Pilih fitur "Scan QR" / "Bayar via QRIS"</p>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <p class="text-sm text-gray-600">Scan QR di atas dan konfirmasi nominal</p>
+                    </div>
+                </div>
+
+                <button onclick="confirmPayment()"
+                    class="w-full py-4 bg-gradient-to-r from-brand to-brand-dark text-white font-bold rounded-xl shadow-lg shadow-brand/30 hover:shadow-xl hover:-translate-y-0.5 transition-all text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Saya Sudah Bayar
+                </button>
+            </div>
+        </div>
+
+        <!-- Security badges -->
+        <div class="flex items-center justify-center gap-6 mt-8 pt-6 border-t border-gray-100">
+            <div class="flex items-center gap-1.5 text-xs text-gray-400">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                SSL Secured
+            </div>
+            <div class="flex items-center gap-1.5 text-xs text-gray-400">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                Data Terenkripsi
+            </div>
+            <div class="flex items-center gap-1.5 text-xs text-gray-400">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                OJK Registered
+            </div>
+        </div>
+
+        <button onclick="goStep('step-confirm')"
+            class="mt-4 mx-auto block text-gray-400 hover:text-gray-600 text-sm font-medium transition-colors">←
+            Kembali</button>
+    </div>
+
+    <!-- ===== STEP: Processing (loading) ===== -->
+    <div id="step-processing" class="booking-step hidden max-w-lg mx-auto px-6 text-center">
+        <div class="bg-white p-10 rounded-3xl shadow-xl border border-gray-100">
+            <div class="w-20 h-20 mx-auto mb-6 relative">
+                <svg class="animate-spin w-20 h-20 text-brand" viewBox="0 0 24 24" fill="none">
+                    <circle class="opacity-20" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"/>
+                    <path class="opacity-80" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                </svg>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-brand-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+            </div>
+            <h2 class="text-2xl font-extrabold text-gray-900 mb-2">Memverifikasi Pembayaran</h2>
+            <p class="text-gray-500 text-sm">Mohon tunggu, sistem sedang memproses transaksi Anda...</p>
+            <div class="mt-6 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-brand to-brand-dark rounded-full animate-progress" style="animation: progress-bar 2.5s ease forwards;"></div>
+            </div>
+        </div>
+        <style>
+            @keyframes progress-bar {
+                0%   { width: 0%; }
+                60%  { width: 75%; }
+                100% { width: 100%; }
+            }
+            .animate-progress { width: 0%; }
+        </style>
+    </div>
+
     <!-- ===== STEP: Success ===== -->
     <div id="step-success" class="booking-step hidden max-w-lg mx-auto px-6 text-center">
         <div class="bg-white p-10 rounded-3xl shadow-xl border border-gray-100">
             <div
-                class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center text-white text-5xl mb-8 shadow-xl shadow-brand/30">
-                ✓
+                class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center mb-8 shadow-xl shadow-brand/30">
+                <!-- Check icon -->
+                <svg class="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
             </div>
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Pesanan Berhasil! 🎉</h2>
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Pesanan Berhasil!</h2>
             <p class="text-gray-500 mb-2">Terima kasih telah menggunakan <strong>JasaKami</strong></p>
             <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full text-sm mb-8">
                 <span class="text-gray-400">Order ID:</span>
                 <span id="order-id" class="font-bold text-gray-900">JK-2026-001</span>
             </div>
+
+            <!-- Payment method used -->
+            <div id="success-payment-method" class="flex items-center justify-center gap-2 px-4 py-2 bg-emerald-50 rounded-xl mb-6 text-sm text-emerald-700 font-medium">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Dibayar via <span id="success-method-name" class="font-bold ml-1">Transfer Bank</span>
+            </div>
+
             <div class="space-y-3">
                 <a id="wa-link" href="#" target="_blank"
-                    class="block w-full py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-xl shadow-lg shadow-green-200 hover:shadow-xl hover:-translate-y-0.5 transition-all">
-                    📱 Hubungi via WhatsApp
+                    class="block w-full py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-xl shadow-lg shadow-green-200 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <!-- Phone icon -->
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    Hubungi via WhatsApp
                 </a>
                 <a href="/"
                     class="block w-full py-4 bg-gray-50 border border-gray-200 text-gray-600 font-semibold rounded-xl hover:bg-gray-100 transition-all">
@@ -496,20 +1078,20 @@ $departments = $services['departments'] ?? [];
 
         // Department color map
         const deptColors = {
-            perhotelan: { bg: 'background:#d1fae5', text: 'color:#065f46', label: '🏨 Perhotelan' },
-            kuliner:    { bg: 'background:#ffedd5', text: 'color:#9a3412', label: '🍳 Kuliner' },
-            pplg:       { bg: 'background:#ede9fe', text: 'color:#5b21b6', label: '💻 PPLG' },
+            perhotelan: { bg: 'background:#d1fae5', text: 'color:#065f46', label: 'Perhotelan' },
+            kuliner:    { bg: 'background:#ffedd5', text: 'color:#9a3412', label: 'Kuliner' },
+            pplg:       { bg: 'background:#ede9fe', text: 'color:#5b21b6', label: 'PPLG' },
         };
         const genderStyle = {
-            female: { bg: 'background:#fce7f3', text: 'color:#9d174d', icon: '♀' },
-            male:   { bg: 'background:#dbeafe', text: 'color:#1e3a8a', icon: '♂' },
+            female: { bg: 'background:#fce7f3', text: 'color:#9d174d', icon: `<svg class="w-3 h-3 inline" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14v6M9 17h6"/></svg>` },
+            male:   { bg: 'background:#dbeafe', text: 'color:#1e3a8a', icon: `<svg class="w-3 h-3 inline" fill="currentColor" viewBox="0 0 24 24"><circle cx="10" cy="10" r="4"/><path d="M15 5h4v4M15 5l-5 5"/></svg>` },
         };
 
         grid.innerHTML = filtered.map(w => {
             const dc  = deptColors[w.department]  || { bg: 'background:#f1f5f9', text: 'color:#475569', label: w.department };
-            const gc  = genderStyle[w.gender]     || genderStyle.male;
+            const gs  = genderStyle[w.gender]     || genderStyle.male;
             const skills = (w.skills || []).slice(0, 3);
-            const photoSrc = w.photo && w.photo.startsWith('http') ? w.photo : '/' + w.photo;
+            const photoSrc = w.photo && (w.photo.startsWith('http') || w.photo.startsWith('/')) ? w.photo : '/' + w.photo;
 
             return `
             <div onclick="selectWorker(${w.id})" class="glass-card group cursor-pointer rounded-3xl overflow-hidden border border-mint-100 hover:border-brand/30 hover:shadow-2xl hover:shadow-brand/10 transition-all duration-500 hover:-translate-y-3">
@@ -517,10 +1099,11 @@ $departments = $services['departments'] ?? [];
                     <img src="${photoSrc}" alt="${w.name}" class="w-36 h-36 object-cover rounded-full border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500"
                         onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(w.name)}&background=random&size=144'">
                     <div class="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 bg-yellow-400/90 rounded-full text-xs font-bold text-yellow-900 backdrop-blur-sm">
-                        ⭐ ${w.rating}
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        ${w.rating}
                     </div>
-                    <div class="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold backdrop-blur-sm" style="${gc.bg};${gc.text}">
-                        ${gc.icon} ${w.gender === 'female' ? 'Perempuan' : 'Laki-laki'}
+                    <div class="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold backdrop-blur-sm" style="${gs.bg};${gs.text}">
+                        ${gs.icon} ${w.gender === 'female' ? 'Perempuan' : 'Laki-laki'}
                     </div>
                 </div>
                 <div class="p-5">
@@ -587,6 +1170,227 @@ $departments = $services['departments'] ?? [];
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
+
+    // ===========================
+    // PAYMENT GATEWAY LOGIC
+    // ===========================
+
+    const BANK_DATA = {
+        bca: {
+            name: 'Bank Central Asia',
+            shortName: 'BCA',
+            va: '1234 5678 9012 3456',
+            menuName: 'Virtual Account BCA',
+            gradient: 'linear-gradient(135deg,#006cb7,#004e8a)',
+            logoSvg: `<svg width="28" height="14" viewBox="0 0 56 24" fill="white"><text x="0" y="18" font-family="Arial" font-weight="900" font-size="18" fill="white">BCA</text></svg>`
+        },
+        bri: {
+            name: 'Bank Rakyat Indonesia',
+            shortName: 'BRI',
+            va: '0889 9876 5432 1010',
+            menuName: 'Virtual Account BRI',
+            gradient: 'linear-gradient(135deg,#003087,#0044cc)',
+            logoSvg: `<svg width="28" height="14" viewBox="0 0 56 24" fill="white"><text x="0" y="18" font-family="Arial" font-weight="900" font-size="18" fill="white">BRI</text></svg>`
+        },
+        mandiri: {
+            name: 'Bank Mandiri',
+            shortName: 'Mandiri',
+            va: '7007 0055 4321 8888',
+            menuName: "Transfer Virtual Account Mandiri",
+            gradient: 'linear-gradient(135deg,#003087,#f2a900)',
+            logoSvg: `<svg width="28" height="14" viewBox="0 0 72 24" fill="white"><text x="0" y="18" font-family="Arial" font-weight="900" font-size="13" fill="white">MDR</text></svg>`
+        },
+        bni: {
+            name: 'Bank Negara Indonesia',
+            shortName: 'BNI',
+            va: '8882 3456 7890 0011',
+            menuName: 'Virtual Account BNI',
+            gradient: 'linear-gradient(135deg,#f7941d,#e67e00)',
+            logoSvg: `<svg width="28" height="14" viewBox="0 0 56 24" fill="white"><text x="0" y="18" font-family="Arial" font-weight="900" font-size="18" fill="white">BNI</text></svg>`
+        }
+    };
+
+    let selectedBank = null;
+    let paymentTab = 'bank';
+    let paymentTotal = 0;
+    let paymentTimer = null;
+    let timerSeconds = 14 * 60 + 59; // 14:59
+
+    function switchPayTab(tab) {
+        paymentTab = tab;
+        document.querySelectorAll('.pay-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById('panel-' + tab).classList.remove('hidden');
+
+        document.querySelectorAll('.pay-tab').forEach(t => {
+            t.classList.remove('bg-white', 'shadow', 'text-gray-800');
+            t.classList.add('text-gray-500');
+        });
+        const activeTab = document.getElementById('tab-' + tab);
+        activeTab.classList.add('bg-white', 'shadow', 'text-gray-800');
+        activeTab.classList.remove('text-gray-500');
+    }
+
+    function selectBank(bankKey) {
+        selectedBank = bankKey;
+        const bank = BANK_DATA[bankKey];
+
+        // Update card states
+        document.querySelectorAll('.payment-method-card').forEach(card => card.classList.remove('selected'));
+        document.querySelectorAll('.payment-method-card').forEach(card => {
+            if (card.getAttribute('onclick') === `selectBank('${bankKey}')`) {
+                card.classList.add('selected');
+            }
+        });
+
+        // Populate detail panel
+        document.getElementById('detail-bank-name').textContent = bank.name;
+        document.getElementById('detail-bank-logo').style.background = bank.gradient;
+        document.getElementById('detail-bank-logo').innerHTML = bank.logoSvg;
+        document.getElementById('detail-va-number').textContent = bank.va;
+        document.getElementById('detail-amount').textContent = formatRupiah(paymentTotal);
+        document.getElementById('detail-menu-name').textContent = bank.menuName;
+
+        // Show detail panel
+        const detailPanel = document.getElementById('bank-detail');
+        detailPanel.classList.add('active');
+        detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Enable confirm button
+        const btn = document.getElementById('btn-confirm-bank');
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+
+    function copyVA() {
+        const bank = BANK_DATA[selectedBank];
+        if (!bank) return;
+        navigator.clipboard.writeText(bank.va.replace(/\s/g, '')).then(() => {
+            showCopyFeedback(event.currentTarget);
+        });
+    }
+
+    function copyAmount() {
+        navigator.clipboard.writeText(String(paymentTotal)).then(() => {
+            showCopyFeedback(event.currentTarget);
+        });
+    }
+
+    function showCopyFeedback(btn) {
+        const orig = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = `<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Disalin!`;
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = orig;
+        }, 2000);
+    }
+
+    function handleFileUpload(input) {
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            document.getElementById('upload-placeholder').classList.add('hidden');
+            document.getElementById('upload-preview').classList.remove('hidden');
+            document.getElementById('upload-filename').textContent = file.name;
+        }
+    }
+
+    function formatRupiah(amount) {
+        return 'Rp' + amount.toLocaleString('id-ID');
+    }
+
+    function initPaymentStep() {
+        // Sync data from confirm step
+        const workerName = document.getElementById('confirm-worker-name')?.textContent || '';
+        const totalText = document.getElementById('confirm-total')?.textContent || '';
+
+        document.getElementById('pay-worker-name').textContent = workerName;
+        document.getElementById('pay-total-amount').textContent = totalText;
+        document.getElementById('qris-amount').textContent = totalText;
+
+        // Parse total
+        const raw = totalText.replace(/[^0-9]/g, '');
+        paymentTotal = parseInt(raw) || 0;
+
+        // Reset tab to bank
+        switchPayTab('bank');
+
+        // Reset bank selection
+        selectedBank = null;
+        document.querySelectorAll('.payment-method-card').forEach(c => c.classList.remove('selected'));
+        document.getElementById('bank-detail').classList.remove('active');
+        const btn = document.getElementById('btn-confirm-bank');
+        btn.disabled = true;
+        btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+        // Reset upload
+        document.getElementById('upload-placeholder').classList.remove('hidden');
+        document.getElementById('upload-preview').classList.add('hidden');
+
+        // Start countdown timer
+        startPaymentTimer();
+    }
+
+    function startPaymentTimer() {
+        if (paymentTimer) clearInterval(paymentTimer);
+        timerSeconds = 14 * 60 + 59;
+        updateTimerDisplay();
+
+        paymentTimer = setInterval(() => {
+            timerSeconds--;
+            if (timerSeconds <= 0) {
+                clearInterval(paymentTimer);
+                timerSeconds = 0;
+            }
+            updateTimerDisplay();
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const m = Math.floor(timerSeconds / 60);
+        const s = timerSeconds % 60;
+        const el = document.getElementById('payment-timer');
+        if (el) el.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+
+        // Update ring
+        const ring = document.getElementById('timer-ring');
+        if (ring) {
+            const total = 14 * 60 + 59;
+            const ratio = timerSeconds / total;
+            const dashOffset = 113 * (1 - ratio);
+            ring.style.strokeDashoffset = dashOffset;
+        }
+    }
+
+    function confirmPayment() {
+        if (paymentTimer) clearInterval(paymentTimer);
+
+        // Show processing
+        document.querySelectorAll('.booking-step').forEach(s => s.classList.add('hidden'));
+        const proc = document.getElementById('step-processing');
+        if (proc) proc.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => {
+            // Generate order ID
+            const orderId = 'JK-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+            const el = document.getElementById('order-id');
+            if (el) el.textContent = orderId;
+
+            // Set payment method label
+            const methodName = paymentTab === 'qris' ? 'QRIS' :
+                (selectedBank ? (BANK_DATA[selectedBank]?.shortName || 'Transfer Bank') : 'Transfer Bank');
+            const mn = document.getElementById('success-method-name');
+            if (mn) mn.textContent = methodName;
+
+            // Show success
+            document.querySelectorAll('.booking-step').forEach(s => s.classList.add('hidden'));
+            const succ = document.getElementById('step-success');
+            if (succ) succ.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 2500);
+    }
+
+    // initPaymentStep is global — called by app.js goStep hook when entering step-payment
 </script>
 
 <?php
